@@ -61,14 +61,12 @@ class UsuarioModel extends Model
     // protected $allowCallbacks = true;
    protected $beforeInsert   = ['hashPassword'];
     protected $beforeUpdate   = ['hashPassword'];
-    protected $beforeUpdate   = [];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-}
- protected function hashPassword(array $data)
+public function hashPassword(array $data)   
     {
         if (isset($data['data']['senha'])) {
             $data['data']['senha'] = password_hash($data['data']['senha'], PASSWORD_DEFAULT);
