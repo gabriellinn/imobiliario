@@ -4,42 +4,65 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $titulo ?? 'Login - Sistema Imobiliário' ?></title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body>
-    <h2>Login</h2>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
 
-    <?php if (isset($erro) && $erro): ?>
-        <p><strong>Erro:</strong> <?= esc($erro) ?></p>
-    <?php endif; ?>
+    <div class="w-full max-w-sm">
+    
+        <div class="bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4">
 
-    <?php if (isset($sucesso) && $sucesso): ?>
-        <p><strong>Sucesso:</strong> <?= esc($sucesso) ?></p>
-    <?php endif; ?>
+            <h2 class="text-center text-2xl font-bold text-gray-700 mb-6">Login</h2>
 
-    <form action="<?= base_url('processarLogin') ?>" method="post">
-        <p>
-            <label for="email">Email:</label><br>
-            <input type="email" id="email" name="email" value="<?= old('email') ?>" required>
-        </p>
+            <?php if (isset($erro) && $erro): ?>
+                <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <span class="block sm:inline"><?= esc($erro) ?></span>
+                </div>
+            <?php endif; ?>
 
-        <p>
-            <label for="senha">Senha:</label><br>
-            <input type="password" id="senha" name="senha" required>
-        </p>
+            <?php if (isset($sucesso) && $sucesso): ?>
+                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4" role="alert">
+                    <span class="block sm:inline"><?= esc($sucesso) ?></span>
+                </div>
+            <?php endif; ?>
 
-        <p>
-            <button type="submit">Entrar</button>
-        </p>
-    </form>
+            <form action="<?= base_url('processarLogin') ?>" method="post">
+                <div class="mb-4">
+                    <label for="email" class="block text-gray-700 text-sm font-bold mb-2">
+                        Email:
+                    </label>
+                    <input type="email" id="email" name="email" value="<?= old('email') ?>" required
+                           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
 
-    <h3>Dados de Teste:</h3>
-    <p>
-        <strong>Email:</strong> admin@sistema.com<br>
-        <strong>Senha:</strong> 123456
-    </p>
+                <div class="mb-6">
+                    <label for="senha" class="block text-gray-700 text-sm font-bold mb-2">
+                        Senha:
+                    </label>
+                    <input type="password" id="senha" name="senha" required
+                           class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
 
-    <p>
-        <a href="<?= base_url('/') ?>">Voltar para o site</a>
-    </p>
+                <div class="flex items-center justify-between">
+                    <button type="submit"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full focus:outline-none focus:shadow-outline">
+                        Entrar
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <div class="text-center text-gray-600 text-sm">
+            <div class="bg-gray-200 p-3 rounded-lg mb-4">
+                <h3 class="font-bold">Dados de Teste:</h3>
+                <p><strong>Email:</strong> admin@sistema.com</p>
+                <p><strong>Senha:</strong> 123456</p>
+            </div>
+            <a href="<?= base_url('/') ?>" class="font-bold text-blue-500 hover:text-blue-800">
+                Voltar para o site
+            </a>
+        </div>
+    </div>
+
 </body>
 </html>
