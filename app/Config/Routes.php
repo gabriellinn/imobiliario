@@ -9,7 +9,8 @@ $routes->get('/', 'Home::index');
 //login e logout
 $routes->get('/login', 'AuthController::mostrarTelaLogin');
 $routes->post('/processarLogin', 'AuthController::processarLogin');
+$routes->get('/dashboard', 'SiteController::dashboard');
 $routes->get('/logout', 'AuthController::logout');
 
 //rota para gerar senha (apenas para teste, remover depois)
-$routes->get('/gerarsenha', 'AuthController::gerarSenha');  
+$routes->get('/gerarsenha', 'AuthController::gerarSenha');

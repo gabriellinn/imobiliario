@@ -23,3 +23,4 @@ in APPPATH\Models\UsuarioModel.php on line 71.
  8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 DEBUG - 2025-09-22 18:00:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-09-22 21:11:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
