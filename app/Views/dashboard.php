@@ -23,6 +23,7 @@
             Logout
         </a>
     </div>
+    <a href= "<?= base_url(relativePath:'/cadastrarcorretor')?>">Cadastrar Corretor</a>
 
 </body>
 </html>

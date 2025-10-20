@@ -31,4 +31,10 @@ class SiteController extends BaseController
             'usuario' => $usuario
         ]);
     }
+
+    public function processarImovel(){
+         if (!$this->session->get('usuario_logado')) {
+            return redirect()->to('/');
+        }
+    }
 }

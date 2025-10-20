@@ -54,7 +54,7 @@
 
         <div class="text-center text-gray-600 text-sm">
             <div class="bg-gray-200 p-3 rounded-lg mb-4">
-                <h3 class="font-bold">Dados de Teste:</h3>
+                <h3 class="font-bold">Dados de Admin:</h3>
                 <p><strong>Email:</strong> admin@sistema.com</p>
                 <p><strong>Senha:</strong> 123456</p>
             </div>
