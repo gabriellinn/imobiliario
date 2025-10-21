@@ -18,6 +18,7 @@ class UsuarioModel extends Model
     protected $useTimestamps = true;
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
+    
 
     // regras de validação
     protected $validationRules = [

@@ -37,4 +37,29 @@ class SiteController extends BaseController
             return redirect()->to('/');
         }
     }
+
+    public function PaginaInicial()
+    {
+        return view('paginainicial');
+    }
+
+    public function meuPerfil()
+    {
+        // Verifica se o usuário está logado
+        if (!$this->session->get('usuario_logado')) {
+            return redirect()->to('/login');
+        }
+
+        // Busca os dados do usuário logado
+        $usuario = $this->usuarioModel->find($this->session->get('usuario_id'));
+        $nome = $usuario['nome'];
+        $email = $usuario['email'];
+
+        // Retorna a view de perfil com os dados do usuário
+        return view('perfil', [
+            'usuario' => $usuario,
+            'nome' => $nome,
+            'email' => $email
+        ]);
+    }
 }

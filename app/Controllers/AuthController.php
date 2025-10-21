@@ -15,20 +15,19 @@ class AuthController extends BaseController
     {
         $this->usuarioModel = new UsuarioModel();
         $this->session = session();
-    }   
+    }
 
-    //função para mostrar a view de login
+    // função para mostrar a view de login
     public function mostrarTelaLogin()
     {
         // se já estiver logado, redireciona para o dashboard
         if ($this->session->get('usuario_logado')) {
             return redirect()->to('/dashboard');
         }
-
         return view('auth/login');
     }
 
-    //função para processar o login
+    // função para processar o login
     public function processarLogin()
     {
         $emailFormulario = $this->request->getPost('email');
@@ -37,13 +36,13 @@ class AuthController extends BaseController
         // buscar o usuário pelo email
         $usuario = $this->usuarioModel->where('email', $emailFormulario)->first();
         
-        //se existe usuario
-        if($usuario) {
-            //verificar a senha se existe e se bate com a do banco
+        // se existe usuario
+        if ($usuario) {
+            // verificar a senha se existe e se bate com a do banco
             $senhaValida = $this->usuarioModel->verificarSenha($senhaFormulario, $usuario['senha']);
             
-            //se a senha for valida
-            if($senhaValida) {
+            // se a senha for valida
+            if ($senhaValida) {
                 $dadosSessao = [
                     'usuario_logado' => true,
                     'usuario_id'    => $usuario['id'],
@@ -51,30 +50,26 @@ class AuthController extends BaseController
                     'usuario_email' => $usuario['email'],
                     'usuario_tipo'  => $usuario['tipo']
                 ]; 
-
                 $this->session->set($dadosSessao);
 
                 return redirect()->to('/dashboard');
+            } else {
+                return redirect()->to('/login')->with('erro', 'Usuário não encontrado');
             }
-
         }
-
-         return redirect()->to('/login');
-
+        return redirect()->to('/login');
     }
 
-    //função para logout
+    // função para logout
     public function logout()
     {
         $this->session->destroy();
         return redirect()->to('/login');
     }
 
-
+    // função para gerar hash de senha
     public function gerarSenha()
     {
         var_dump(password_hash("123456", PASSWORD_DEFAULT));
     }
-
-
 }
