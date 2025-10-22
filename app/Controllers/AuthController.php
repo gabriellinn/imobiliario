@@ -22,7 +22,7 @@ class AuthController extends BaseController
     {
         // se já estiver logado, redireciona para o dashboard
         if ($this->session->get('usuario_logado')) {
-            return redirect()->to('/dashboard');
+            return redirect()->to('paginainicial');
         }
         return view('auth/login');
     }
@@ -52,7 +52,7 @@ class AuthController extends BaseController
                 ]; 
                 $this->session->set($dadosSessao);
 
-                return redirect()->to('/dashboard');
+                return redirect()->to('/admin/dashboard');
             } else {
                 return redirect()->to('/login')->with('erro', 'Usuário não encontrado');
             }

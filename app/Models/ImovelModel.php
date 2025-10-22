@@ -30,16 +30,16 @@ class ImovelModel extends Model
         'destaque',
         'usuario_id',
         'bairro_id',
-        
+
     ];
 
     // Habilitar uso de timestamps automáticos (opcional)
     protected $useTimestamps = true;
-    protected $createdField  = 'created_at';
-    protected $updatedField  = 'updated_at';
+    protected $createdField = 'created_at';
+    protected $updatedField = 'updated_at';
 
     // Validação (opcional)
-    protected $validationRules    = [];
+    protected $validationRules = [];
     protected $validationMessages = [];
-    protected $skipValidation     = false;
+    protected $skipValidation = false;
 }

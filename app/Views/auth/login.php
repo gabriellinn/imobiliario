@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= $titulo ?? 'Login - Sistema Imobiliário' ?></title>
-    <!-- O script do TailwindCSS foi removido -->
+    <?= $this->include('partials/header') ?>
 </head>
 <body>
  
