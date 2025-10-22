@@ -15,5 +15,5 @@ $routes->get('/logout', 'AuthController::logout');
 $routes->get('/cadastrarcorretor', 'CorretorController::CadastrarCorretorFormulario');
 $routes->post('/cadastrarCorretor', 'CorretorController::cadastrarCorretor');
 $routes->get('/perfil', 'SiteController::meuPerfil');
-//rota para gerar senha (apenas para teste, remover depois)
-$routes->get('/gerarsenha', 'AuthController::gerarSenha');
+$routes->get('/cadastrarimovel', 'ImovelController::index');
+$routes->post('/registrarimovel', 'ImovelController::registrarImovel');

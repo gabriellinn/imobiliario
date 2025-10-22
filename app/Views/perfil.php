@@ -7,6 +7,8 @@
 </head>
 <body>
     <h1>Meu Perfil</h1>
+
+    <p>id: <?= esc($usuario['id']); ?></p>
     <p>Nome: <?= esc($usuario['nome']); ?></p>
     <p>Email: <?= esc($usuario['email']); ?></p>
 

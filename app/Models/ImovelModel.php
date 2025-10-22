@@ -6,41 +6,40 @@ use CodeIgniter\Model;
 
 class ImovelModel extends Model
 {
-    protected $table            = 'imoveis';
-    protected $primaryKey       = 'id';
-    protected $useAutoIncrement = true;
-    protected $returnType       = 'array';
-    protected $useSoftDeletes   = false;
-    protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $table = 'imoveis'; // Nome da tabela no banco
+    protected $primaryKey = 'id'; // Nome da chave primária
 
-    protected bool $allowEmptyInserts = false;
-    protected bool $updateOnlyChanged = true;
+    // Campos permitidos para inserção/atualização
+    protected $allowedFields = [
+        'titulo',
+        'descricao',
+        'preco_venda',
+        'preco_aluguel',
+        'finalidade',
+        'status',
+        'tipo_imovel_id',
+        'dormitorios',
+        'banheiros',
+        'garagem',
+        'area_total',
+        'area_construida',
+        'endereco',
+        'numero',
+        'complemento',
+        'caracteristicas',
+        'destaque',
+        'usuario_id',
+        'bairro_id',
+        
+    ];
 
-    protected array $casts = [];
-    protected array $castHandlers = [];
-
-    // Dates
-    protected $useTimestamps = false;
-    protected $dateFormat    = 'datetime';
+    // Habilitar uso de timestamps automáticos (opcional)
+    protected $useTimestamps = true;
     protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
 
-    // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
-    protected $skipValidation       = false;
-    protected $cleanValidationRules = true;
-
-    // Callbacks
-    protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
-    protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
-    protected $afterUpdate    = [];
-    protected $beforeFind     = [];
-    protected $afterFind      = [];
-    protected $beforeDelete   = [];
-    protected $afterDelete    = [];
+    // Validação (opcional)
+    protected $validationRules    = [];
+    protected $validationMessages = [];
+    protected $skipValidation     = false;
 }

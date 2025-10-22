@@ -10,11 +10,14 @@
     <h1>Página Inicial do Corretor</h1>
 <a href="<?= base_url('/login') ?>">
     Login
-</a>
+</a><br>
 
  <a href="<?= base_url('/logout') ?>">
             Logout
-        </a>
+        </a><br>
 
+        <a href="<?= base_url('/cadastrarimovel') ?>">
+    Cadastrar Imóvel
+</a><br>
 </body>
 </html>
