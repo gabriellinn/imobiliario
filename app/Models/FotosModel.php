@@ -12,7 +12,7 @@ class FotosModel extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = [];
+    protected $allowedFields = ['nome_arquivo', 'imovel_id','nome_arquivo','caminho','capa'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
