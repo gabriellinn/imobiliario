@@ -49,6 +49,7 @@
                         <!-- Links para editar e excluir (rotas do ImovelController) -->
                         <a href="<?= site_url('imoveis/editar/' . $imovel['id']) ?>">Editar</a> |
                         <a href="<?= site_url('imoveis/excluir/' . $imovel['id']) ?>" onclick="return confirm('Tem certeza que deseja excluir este imóvel?');">Excluir</a>
+                        <a href="<?= site_url('imovel/fotos/read/' . $imovel['id']) ?>">Gerir Fotos</a>
                     </td>
                 </tr>
                 <?php endforeach; ?>

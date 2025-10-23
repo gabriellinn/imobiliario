@@ -16,7 +16,7 @@ class AdminFilter implements FilterInterface
             return redirect()->to('/login');
         }
 
-        if ($session->get('usuario_tipo') !== 'admin') {
+        if ($session->get('tipo') !== 'admin') {
             return redirect()->to('/paginainicial');
         }
     }

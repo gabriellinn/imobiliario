@@ -134,7 +134,7 @@
         </div>
 
         <button type="submit"><?= (empty($imovel)) ? 'Cadastrar' : 'Atualizar' ?> Imóvel</button>
-        <a href="<?= site_url('imoveis') ?>">Cancelar</a>
+        <a href="<?= site_url('imovel/listar') ?>">Cancelar</a>
     </form>
 </body>
 

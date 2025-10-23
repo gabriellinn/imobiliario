@@ -82,7 +82,7 @@
                     <!-- Link do Perfil agora é o nome do usuário -->
                     <li><a href="<?= site_url('/perfil') ?>">Meu Perfil</a></li>
 
-                    <?php if ($tipo_usuario === 'admin'): ?>
+                    <?php if ($usuario_logado): ?>
                         <!-- Links exclusivos do ADMIN -->
                         <!-- ADICIONADO: Link do Dashboard -->
                         <li><a href="<?= site_url('/admin/dashboard') ?>">Dashboard</a></li>
