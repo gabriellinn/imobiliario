@@ -43,14 +43,15 @@ class AuthController extends BaseController
             
             // se a senha for valida
             if ($senhaValida) {
-                $dadosSessao = [
-                    'usuario_logado' => true,
-                    'usuario_id'    => $usuario['id'],
-                    'usuario_nome'  => $usuario['nome'],
-                    'usuario_email' => $usuario['email'],
-                    'usuario_tipo'  => $usuario['tipo']
-                ]; 
-                $this->session->set($dadosSessao);
+                // No seu AuthController.php, mude isto:
+$dadosSessao = [
+    'usuario_logado' => true,
+    'usuario_id'     => $usuario['id'],
+    'nome'           => $usuario['nome'], // Use 'nome', não 'usuario_nome'
+    'email'          => $usuario['email'],// Use 'email', não 'usuario_email'
+    'tipo'           => $usuario['tipo']  // Use 'tipo', não 'usuario_tipo'
+]; 
+$this->session->set($dadosSessao);
 
                 return redirect()->to('/admin/dashboard');
             } else {

@@ -12,7 +12,7 @@ class BairroModel extends Model
     protected $returnType = 'array';
     protected $useSoftDeletes = false;
     protected $protectFields = true;
-    protected $allowedFields = [];
+    protected $allowedFields = ['nome','cidade','estado','cep_inicial','cep_final'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

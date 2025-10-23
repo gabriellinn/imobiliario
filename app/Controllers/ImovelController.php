@@ -53,7 +53,7 @@ class ImovelController extends BaseController
         $dados['imovel'] = null;
         
         // CORREÇÃO: Aponta para a subpasta 'imovel'
-        return view('imovel/cadastrarimovel', $dados);
+        return view('imovel/formularioimovel', $dados);
     }
 
     /**

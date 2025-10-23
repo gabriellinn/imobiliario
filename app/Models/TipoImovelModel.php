@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class TipoImovelModel extends Model
 {
-    protected $table = 'tipoimoveis';
+    protected $table = 'tipos_imoveis';
     protected $primaryKey = 'id';
     protected $useAutoIncrement = true;
     protected $returnType = 'array';

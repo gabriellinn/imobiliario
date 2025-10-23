@@ -14,7 +14,7 @@
     <p>id: <?= esc($usuario['id']); ?></p>
     <p>Nome: <?= esc($usuario['nome']); ?></p>
     <p>Email: <?= esc($usuario['email']); ?></p>
-
+    <p>Tipo: <?= esc($usuario['tipo']); ?></p>
 
 </body>
 

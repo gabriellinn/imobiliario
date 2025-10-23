@@ -24,10 +24,20 @@
         
         <a href="<?= base_url('admin/listar') ?>">
             Lista de Corretores
-        </a>
+        </a><br>    
        
+        <a href="<?= base_url('imovel/listar') ?>">
+            Lista de Imóveis
+        </a><br>
+        
+        <a href="<?= base_url('admin/tipoimoveis/listar') ?>">
+            Lista de Tipos de Imóveis
+        </a><br>
 
+        <a href="<?= base_url('admin/bairro/listar') ?>">
+            Ver Bairros
     </div>
+</a><br>
 
     <?php if (session()->getFlashdata('sucesso')): ?>
         <div>

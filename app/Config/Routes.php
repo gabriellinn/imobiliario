@@ -42,7 +42,7 @@ $routes->group('admin', ['filter' => 'admin'], static function ($routes) {
 
     /**
      * (C) STORE - Salva o novo Corretor
-     * Rota: POST /admin/cadastrarcorretor
+     * Rota: POST /admin/store
      * Mapeia para: AdminController::store()
      */
     $routes->post('store', 'AdminController::store');
@@ -67,6 +67,29 @@ $routes->group('admin', ['filter' => 'admin'], static function ($routes) {
      * Mapeia para: AdminController::delete($id)
      */
     $routes->get('delete/(:num)', 'AdminController::delete/$1');
+
+    
+    // --- CRUD TIPOS DE IMÓVEIS ---
+    // Rotas: /admin/tipoimoveis/listar, /admin/tipoimoveis/criar, etc.
+    $routes->group('tipoimoveis', static function ($routes) {
+        $routes->get('listar', 'TipoImovelController::index');
+        $routes->get('criar', 'TipoImovelController::create');
+        $routes->post('salvar', 'TipoImovelController::store');
+        $routes->get('editar/(:num)', 'TipoImovelController::edit/$1');
+        $routes->post('atualizar/(:num)', 'TipoImovelController::update/$1');
+        $routes->get('excluir/(:num)', 'TipoImovelController::delete/$1');
+    });
+
+    // --- CRUD BAIRROS ---
+    // Rotas: /admin/bairro/listar, /admin/bairro/criar, etc.
+    $routes->group('bairro', static function ($routes) {
+        $routes->get('listar', 'BairroController::index');
+        $routes->get('criar', 'BairroController::create');
+        $routes->post('salvar', 'BairroController::store');
+        $routes->get('editar/(:num)', 'BairroController::edit/$1');
+        $routes->post('atualizar/(:num)', 'BairroController::update/$1');
+        $routes->get('excluir/(:num)', 'BairroController::delete/$1');
+    });
 
 });
 
@@ -98,9 +121,9 @@ $routes->group('imovel', static function ($routes) {
     /**
      * (U) EDIT
      * Rota: GET /imovel/editar/[ID]
-     * Mapeia para: ImovelController::edit($id)
+     * Mapeia para: ImMovelController::edit($id)
      */
-    $routes->get('editar/(:num)', 'ImovelController::edit/$1');
+    $routes->get('editar/(:num)', 'ImMovelController::edit/$1');
 
     /**
      * (U) UPDATE
@@ -110,7 +133,7 @@ $routes->group('imovel', static function ($routes) {
     $routes->post('atualizar/(:num)', 'ImovelController::update/$1');
 
     /**
-     * (D) DELETE
+     * (D) DELETE   
      * Rota: GET /imovel/excluir/[ID]
      * Mapeia para: ImovelController::delete($id)
      */
