@@ -24,6 +24,11 @@ class SiteController extends BaseController
         $this->session = session();
     }
 
+    public function header(): string|ResponseInterface
+    {
+        $usuario = $this->session->get('usuario_logado');
+        return view('header');
+    }
     /**
      * Exibe o dashboard principal.
      * Esta rota deve ser protegida por um filtro (ex: 'admin' ou 'auth').

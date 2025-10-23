@@ -389,3 +389,187 @@ in APPPATH\Views\partials\header.php on line 83.
 13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
 14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-23 02:40:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-23 02:40:22 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: admin/tipoimoveis/listar]
+in APPPATH\Views\partials\header.php on line 83.
+ 1 APPPATH\Views\partials\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partials/header', null, true)
+ 5 APPPATH\Views\admin\tipoimoveis\listar.php(7): CodeIgniter\View\View->include('partials/header')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\admin\\tipoimoveis\\listar.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('admin/tipoimoveis/listar', [], true)
+ 9 APPPATH\Controllers\TipoImovelController.php(31): view('admin/tipoimoveis/listar', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\TipoImovelController->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TipoImovelController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-23 02:40:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:40:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-23 02:40:25 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: admin/tipoimoveis/listar]
+in APPPATH\Views\partials\header.php on line 83.
+ 1 APPPATH\Views\partials\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partials/header', null, true)
+ 5 APPPATH\Views\admin\tipoimoveis\listar.php(7): CodeIgniter\View\View->include('partials/header')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\admin\\tipoimoveis\\listar.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('admin/tipoimoveis/listar', [], true)
+ 9 APPPATH\Controllers\TipoImovelController.php(31): view('admin/tipoimoveis/listar', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\TipoImovelController->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\TipoImovelController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-23 02:42:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:42:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:42:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-23 02:42:42 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: imovel/listar]
+in APPPATH\Views\partials\header.php on line 83.
+ 1 APPPATH\Views\partials\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partials/header', null, true)
+ 5 APPPATH\Views\imovel\listar.php(7): CodeIgniter\View\View->include('partials/header')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\imovel\\listar.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('imovel/listar', [], true)
+ 9 APPPATH\Controllers\ImovelController.php(39): view('imovel/listar', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-23 02:43:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-23 02:43:30 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: imovel/listar]
+in APPPATH\Views\partials\header.php on line 83.
+ 1 APPPATH\Views\partials\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partials/header', null, true)
+ 5 APPPATH\Views\imovel\listar.php(7): CodeIgniter\View\View->include('partials/header')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\imovel\\listar.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('imovel/listar', [], true)
+ 9 APPPATH\Controllers\ImovelController.php(39): view('imovel/listar', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-23 02:43:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-23 02:43:41 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: imovel/listar]
+in APPPATH\Views\partials\header.php on line 83.
+ 1 APPPATH\Views\partials\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partials/header', null, true)
+ 5 APPPATH\Views\imovel\listar.php(7): CodeIgniter\View\View->include('partials/header')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\imovel\\listar.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('imovel/listar', [], true)
+ 9 APPPATH\Controllers\ImovelController.php(39): view('imovel/listar', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-23 02:43:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:43:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-23 02:43:43 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: imovel/listar]
+in APPPATH\Views\partials\header.php on line 83.
+ 1 APPPATH\Views\partials\header.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php', 83)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partials/header', null, true)
+ 5 APPPATH\Views\imovel\listar.php(7): CodeIgniter\View\View->include('partials/header')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\imovel\\listar.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('imovel/listar', [], true)
+ 9 APPPATH\Controllers\ImovelController.php(39): view('imovel/listar', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-23 02:45:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:45:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:45:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:45:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:45:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-23 02:45:55 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: imovel/listar]
+in APPPATH\Views\partials\header.php on line 85.
+ 1 APPPATH\Views\partials\header.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php', 85)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partials/header', null, true)
+ 5 APPPATH\Views\imovel\listar.php(7): CodeIgniter\View\View->include('partials/header')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\imovel\\listar.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('imovel/listar', [], true)
+ 9 APPPATH\Controllers\ImovelController.php(39): view('imovel/listar', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-23 02:46:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:46:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-23 02:46:28 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: imovel/listar]
+in APPPATH\Views\partials\header.php on line 85.
+ 1 APPPATH\Views\partials\header.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php', 85)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partials/header', null, true)
+ 5 APPPATH\Views\imovel\listar.php(7): CodeIgniter\View\View->include('partials/header')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\imovel\\listar.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('imovel/listar', [], true)
+ 9 APPPATH\Controllers\ImovelController.php(39): view('imovel/listar', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->index()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-23 02:46:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:46:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-23 02:46:39 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: perfil]
+in APPPATH\Views\partials\header.php on line 85.
+ 1 APPPATH\Views\partials\header.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php', 85)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\partials\\header.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(475): CodeIgniter\View\View->render('partials/header', null, true)
+ 5 APPPATH\Views\perfil.php(8): CodeIgniter\View\View->include('partials/header')
+ 6 SYSTEMPATH\View\View.php(226): include('C:\\xampp\\htdocs\\imobiliario\\app\\Views\\perfil.php')
+ 7 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 8 SYSTEMPATH\Common.php(1167): CodeIgniter\View\View->render('perfil', [], true)
+ 9 APPPATH\Controllers\SiteController.php(84): view('perfil', [...])
+10 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\SiteController->meuPerfil()
+11 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SiteController))
+12 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+14 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+15 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-10-23 02:46:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:46:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-10-23 02:46:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

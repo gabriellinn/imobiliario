@@ -80,9 +80,9 @@
                     <li><a href="<?= site_url('/imovel/listar') ?>">Meus Imóveis</a></li>
                     
                     <!-- Link do Perfil agora é o nome do usuário -->
-                    <li><a href="<?= site_url('/perfil') ?>"><?= $usuario['nome'] ?></a></li>
+                    <li><a href="<?= site_url('/perfil') ?>">Meu Perfil</a></li>
 
-                    <?php if ($usuario['tipo'] === 'admin'): ?>
+                    <?php if ($tipo_usuario === 'admin'): ?>
                         <!-- Links exclusivos do ADMIN -->
                         <!-- ADICIONADO: Link do Dashboard -->
                         <li><a href="<?= site_url('/admin/dashboard') ?>">Dashboard</a></li>
