@@ -52,6 +52,12 @@ $dadosSessao = [
     'tipo'           => $usuario['tipo']  // Use 'tipo', não 'usuario_tipo'
 ]; 
 $this->session->set($dadosSessao);
+ 
+$adminID = $this->session->get('usuario_id');
+                registrar_log(
+                    $adminID,
+                    'Usuario Logou ' . $usuario['id']
+                );
 
                 return redirect()->to('/admin/dashboard');
             } else {
@@ -61,9 +67,15 @@ $this->session->set($dadosSessao);
         return redirect()->to('/login');
     }
 
-    // função para logout
     public function logout()
     {
+        $idUsuarioLogado = $this->session->get('usuario_id');
+
+// 2. Registra o log (se o ID existir)
+if ($idUsuarioLogado) {
+    registrar_log($idUsuarioLogado, 'Logout efetuado.');
+}
+
         $this->session->destroy();
         return redirect()->to('/login');
     }

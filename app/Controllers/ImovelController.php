@@ -92,6 +92,12 @@ class ImovelController extends BaseController
         ];
 
         $this->imovelModel->insert($imovel);
+        $this->session->get('usuario_id');
+        registrar_log(
+            $this->session->get('usuario_id'),
+            'Imóvel Criado: ' . $dados['nome']
+        );
+
 
         // CORREÇÃO: Redireciona para '/imovel/listar' (singular, da nova rota)
         return redirect()->to('/imovel/listar')->with('sucesso', 'Imóvel cadastrado com sucesso!');
@@ -165,6 +171,12 @@ class ImovelController extends BaseController
         ];
 
         $this->imovelModel->update($id, $dadosParaAtualizar);
+        $this->session->get('usuario_id');
+        registrar_log(
+            $this->session->get('usuario_id'),
+            'Imóvel Criado: ' . $dadosParaAtualizar['nome']
+        );
+
 
         // CORREÇÃO: Redireciona para '/imovel/listar' (singular, da nova rota)
         return redirect()->to('/imovel/listar')->with('sucesso', 'Imóvel atualizado com sucesso!');
@@ -180,6 +192,12 @@ class ImovelController extends BaseController
             return redirect()->to('/login');
         }
         $usuario_id = $this->session->get('usuario_id');
+        $this->session->get('usuario_id');
+        registrar_log(
+            $this->session->get('usuario_id'),
+            'Bairro Criado: ' . $dados['nome']
+        );
+
 
         $imovel = $this->imovelModel->find($id);
 

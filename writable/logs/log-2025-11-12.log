@@ -1,0 +1,694 @@
+DEBUG - 2025-11-12 00:20:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:20:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:20:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:20:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-12 00:20:10 --> mysqli_sql_exception: Table 'imobiliaria.usuarios' doesn't exist in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\imobiliario\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\imobiliario\system\BaseModel.php(715): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\imobiliario\app\Controllers\AuthController.php(37): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(933): App\Controllers\AuthController->processarLogin()
+#8 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#9 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\imobiliario\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\imobiliario\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\imobiliario\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-11-12 00:20:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'imobiliaria.usuarios' doesn't exist
+[Method: POST, Route: processarLogin]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AuthController.php(37): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->processarLogin()
+ 6 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 7 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 00:20:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'imobiliaria.usuarios' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `usuarios`
+WHERE `email` = \'admin@sistema.com\'
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `usuarios`
+WHERE `email` = \'admin@sistema.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\AuthController.php(37): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->processarLogin()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 00:20:10 --> [Caused by] mysqli_sql_exception: Table 'imobiliaria.usuarios' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('SELECT *
+FROM `usuarios`
+WHERE `email` = \'admin@sistema.com\'
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `usuarios`
+WHERE `email` = \'admin@sistema.com\'
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `usuarios`
+WHERE `email` = \'admin@sistema.com\'
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1649): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `usuarios`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(715): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\AuthController.php(37): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->processarLogin()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-11-12 00:21:34 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(40) UNSIGNED NOT NULL,
+	`senha` string(40) UNSIGNED NOT NULL,
+	`tipo` ENUM(a...' at line 4 in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\imobiliario\app\Database\Migrations\1025-11-03-171501_CreateUsuario.php(47): CodeIgniter\Database\Forge->createTable('usuarios')
+#5 C:\xampp\htdocs\imobiliario\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsuario->up()
+#6 C:\xampp\htdocs\imobiliario\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\imobiliario\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\imobiliario\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\imobiliario\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\imobiliario\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\imobiliario\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\imobiliario\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-11-12 00:23:24 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'UNSIGNED NOT NULL,
+	`senha` VARCHAR(40) UNSIGNED NOT NULL,
+	`tipo` ENUM(admin...' at line 4 in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\imobiliario\app\Database\Migrations\1025-11-03-171501_CreateUsuario.php(47): CodeIgniter\Database\Forge->createTable('usuarios')
+#5 C:\xampp\htdocs\imobiliario\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsuario->up()
+#6 C:\xampp\htdocs\imobiliario\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\imobiliario\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\imobiliario\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\imobiliario\system\CLI\BaseCommand.php(119): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\imobiliario\system\Commands\Database\MigrateRefresh.php(87): CodeIgniter\CLI\BaseCommand->call('migrate', Array)
+#11 C:\xampp\htdocs\imobiliario\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\MigrateRefresh->run(Array)
+#12 C:\xampp\htdocs\imobiliario\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate:refresh', Array)
+#13 C:\xampp\htdocs\imobiliario\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#14 C:\xampp\htdocs\imobiliario\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#15 C:\xampp\htdocs\imobiliario\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#16 {main}
+ERROR - 2025-11-12 00:25:42 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'UNSIGNED NOT NULL,
+	`senha` VARCHAR(40) NOT NULL,
+	`tipo` ENUM(admin, correto...' at line 4 in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('CREATE TABLE `u...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('CREATE TABLE `u...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('CREATE TABLE `u...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\Forge.php(570): CodeIgniter\Database\BaseConnection->query('CREATE TABLE `u...')
+#4 C:\xampp\htdocs\imobiliario\app\Database\Migrations\1025-11-03-171501_CreateUsuario.php(48): CodeIgniter\Database\Forge->createTable('usuarios')
+#5 C:\xampp\htdocs\imobiliario\system\Database\MigrationRunner.php(876): App\Database\Migrations\CreateUsuario->up()
+#6 C:\xampp\htdocs\imobiliario\system\Database\MigrationRunner.php(182): CodeIgniter\Database\MigrationRunner->migrate('up', Object(stdClass))
+#7 C:\xampp\htdocs\imobiliario\system\Commands\Database\Migrate.php(85): CodeIgniter\Database\MigrationRunner->latest(NULL)
+#8 C:\xampp\htdocs\imobiliario\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Migrate->run(Array)
+#9 C:\xampp\htdocs\imobiliario\system\CLI\BaseCommand.php(119): CodeIgniter\CLI\Commands->run('migrate', Array)
+#10 C:\xampp\htdocs\imobiliario\system\Commands\Database\MigrateRefresh.php(87): CodeIgniter\CLI\BaseCommand->call('migrate', Array)
+#11 C:\xampp\htdocs\imobiliario\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\MigrateRefresh->run(Array)
+#12 C:\xampp\htdocs\imobiliario\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('migrate:refresh', Array)
+#13 C:\xampp\htdocs\imobiliario\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#14 C:\xampp\htdocs\imobiliario\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#15 C:\xampp\htdocs\imobiliario\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#16 {main}
+DEBUG - 2025-11-12 00:28:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:28:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:28:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:28:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:29:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:29:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:29:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:29:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:30:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:30:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:30:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:30:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:30:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:30:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:30:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:30:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:35:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-12 00:35:38 --> mysqli_sql_exception: Unknown column 'created_at' in 'field list' in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\imobiliario\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\imobiliario\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\imobiliario\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\imobiliario\app\Controllers\AdminController.php(101): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(933): App\Controllers\AdminController->store()
+#9 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#10 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\imobiliario\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\imobiliario\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\imobiliario\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+DEBUG - 2025-11-12 00:35:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:39:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-12 00:39:59 --> Error: Call to undefined function App\Controllers\registrar_log()
+[Method: POST, Route: admin/store]
+in APPPATH\Controllers\AdminController.php on line 106.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->store()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-12 00:41:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:41:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:42:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:42:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:42:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:42:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:42:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:43:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:43:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:44:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-12 00:44:00 --> Error: Call to undefined function App\Controllers\registrar_log()
+[Method: POST, Route: admin/store]
+in APPPATH\Controllers\AdminController.php on line 106.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->store()
+ 2 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-12 00:46:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:46:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:46:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:46:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:46:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:46:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:46:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:46:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:46:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:49:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-12 00:49:28 --> ErrorException: Undefined variable $id
+[Method: GET, Route: logout]
+in APPPATH\Controllers\AuthController.php on line 76.
+ 1 APPPATH\Controllers\AuthController.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'C:\\xampp\\htdocs\\imobiliario\\app\\Controllers\\AuthController.php', 76)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->logout()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-12 00:49:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:49:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:49:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-12 00:49:51 --> ErrorException: Undefined variable $id
+[Method: POST, Route: processarLogin]
+in APPPATH\Controllers\AuthController.php on line 59.
+ 1 APPPATH\Controllers\AuthController.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id', 'C:\\xampp\\htdocs\\imobiliario\\app\\Controllers\\AuthController.php', 59)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->processarLogin()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-12 00:51:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-12 00:51:15 --> ErrorException: Undefined variable $id_usuario
+[Method: POST, Route: processarLogin]
+in APPPATH\Controllers\AuthController.php on line 59.
+ 1 APPPATH\Controllers\AuthController.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $id_usuario', 'C:\\xampp\\htdocs\\imobiliario\\app\\Controllers\\AuthController.php', 59)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->processarLogin()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-12 00:52:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:52:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:52:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:54:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-12 00:54:39 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: logout]
+in APPPATH\Controllers\AuthController.php on line 76.
+ 1 APPPATH\Controllers\AuthController.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\imobiliario\\app\\Controllers\\AuthController.php', 76)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->logout()
+ 3 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 4 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-12 00:56:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 00:56:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:02:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:02:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:02:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:03:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:03:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:14:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:14:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-12 01:14:14 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL) in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `im...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `im...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `im...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `im...', Array, false)
+#4 C:\xampp\htdocs\imobiliario\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\imobiliario\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\imobiliario\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\imobiliario\app\Controllers\ImovelController.php(94): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+#9 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+#10 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\imobiliario\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\imobiliario\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\imobiliario\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-11-12 01:14:14 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL)
+[Method: POST, Route: imovel/salvar]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:14:14 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:14:14\', \'2025-11-12 01:14:14\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:14:14\', \'2025-11-12 01:14:14\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:14:14 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:14:14\', \'2025-11-12 01:14:14\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:14:14\', \'2025-11-12 01:14:14\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:14:14\', \'2025-11-12 01:14:14\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-11-12 01:16:40 --> mysqli_sql_exception: Table 'imobiliaria.tipo_imoveis' doesn't exist in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `ti...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ti...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ti...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ti...', NULL, false)
+#4 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp\htdocs\imobiliario\app\Database\Seeds\TipoImovelSeeder.php(30): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp\htdocs\imobiliario\system\Database\Seeder.php(149): App\Database\Seeds\TipoImovelSeeder->run()
+#7 C:\xampp\htdocs\imobiliario\system\Commands\Database\Seed.php(79): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp\htdocs\imobiliario\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\xampp\htdocs\imobiliario\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\xampp\htdocs\imobiliario\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\imobiliario\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\imobiliario\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-11-12 01:16:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:16:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-12 01:16:51 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL) in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `im...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `im...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `im...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `im...', Array, false)
+#4 C:\xampp\htdocs\imobiliario\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\imobiliario\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\imobiliario\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\imobiliario\app\Controllers\ImovelController.php(94): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+#9 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+#10 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\imobiliario\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\imobiliario\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\imobiliario\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-11-12 01:16:51 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL)
+[Method: POST, Route: imovel/salvar]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:16:51 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:16:51\', \'2025-11-12 01:16:51\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:16:51\', \'2025-11-12 01:16:51\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:16:51 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:16:51\', \'2025-11-12 01:16:51\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:16:51\', \'2025-11-12 01:16:51\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:16:51\', \'2025-11-12 01:16:51\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-12 01:17:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-12 01:17:55 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL) in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `im...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `im...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `im...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `im...', Array, false)
+#4 C:\xampp\htdocs\imobiliario\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\imobiliario\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\imobiliario\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\imobiliario\app\Controllers\ImovelController.php(94): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+#9 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+#10 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\imobiliario\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\imobiliario\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\imobiliario\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-11-12 01:17:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL)
+[Method: POST, Route: imovel/salvar]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:17:55 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:17:55\', \'2025-11-12 01:17:55\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:17:55\', \'2025-11-12 01:17:55\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:17:55 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_tipo_imovel_id_foreign` FOREIGN KEY (`tipo_imovel_id`) REFERENCES `tipos_imoveis` (`id`) ON DELETE NO ACTION ON UPDATE SET NULL)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:17:55\', \'2025-11-12 01:17:55\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:17:55\', \'2025-11-12 01:17:55\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:17:55\', \'2025-11-12 01:17:55\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-11-12 01:21:04 --> mysqli_sql_exception: Table 'imobiliaria.tipo_imoveis' doesn't exist in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `ti...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ti...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ti...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(1841): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ti...', NULL, false)
+#4 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(2230): CodeIgniter\Database\BaseBuilder->batchExecute('_insertBatch', 100)
+#5 C:\xampp\htdocs\imobiliario\app\Database\Seeds\TipoImovelSeeder.php(33): CodeIgniter\Database\BaseBuilder->insertBatch(Array)
+#6 C:\xampp\htdocs\imobiliario\system\Database\Seeder.php(149): App\Database\Seeds\TipoImovelSeeder->run()
+#7 C:\xampp\htdocs\imobiliario\system\Commands\Database\Seed.php(79): CodeIgniter\Database\Seeder->call('App\\Database\\Se...')
+#8 C:\xampp\htdocs\imobiliario\system\CLI\Commands.php(74): CodeIgniter\Commands\Database\Seed->run(Array)
+#9 C:\xampp\htdocs\imobiliario\system\CLI\Console.php(47): CodeIgniter\CLI\Commands->run('db:seed', Array)
+#10 C:\xampp\htdocs\imobiliario\system\Boot.php(388): CodeIgniter\CLI\Console->run()
+#11 C:\xampp\htdocs\imobiliario\system\Boot.php(133): CodeIgniter\Boot::runCommand(Object(CodeIgniter\CLI\Console))
+#12 C:\xampp\htdocs\imobiliario\spark(87): CodeIgniter\Boot::bootSpark(Object(Config\Paths))
+#13 {main}
+DEBUG - 2025-11-12 01:22:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:22:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-12 01:22:44 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_usuario_id_foreign` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE) in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `im...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `im...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `im...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `im...', Array, false)
+#4 C:\xampp\htdocs\imobiliario\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\imobiliario\system\BaseModel.php(838): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\imobiliario\system\Model.php(797): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\imobiliario\app\Controllers\ImovelController.php(94): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+#9 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+#10 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\imobiliario\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\imobiliario\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\imobiliario\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-11-12 01:22:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_usuario_id_foreign` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE)
+[Method: POST, Route: imovel/salvar]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:22:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_usuario_id_foreign` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:22:44\', \'2025-11-12 01:22:44\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:22:44\', \'2025-11-12 01:22:44\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+ 9 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+10 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:22:44 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`imoveis`, CONSTRAINT `imoveis_usuario_id_foreign` FOREIGN KEY (`usuario_id`) REFERENCES `usuarios` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:22:44\', \'2025-11-12 01:22:44\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:22:44\', \'2025-11-12 01:22:44\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (\'ads\', \'ads\', \'32\', \'12212323\', \'venda\', \'disponivel\', \'12123\', \'32\', \'23\', \'23\', \'213\', \'32\', \'3\', \'2\', \'23232\', \'1\', \'2\', \'1\', \'1\', \'2025-11-12 01:22:44\', \'2025-11-12 01:22:44\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `imoveis` (`titulo`, `descricao`, `preco_venda`, `preco_aluguel`, `finalidade`, `status`, `dormitorios`, `banheiros`, `garagem`, `area_total`, `area_construida`, `endereco`, `numero`, `complemento`, `caracteristicas`, `destaque`, `usuario_id`, `tipo_imovel_id`, `bairro_id`, `created_at`, `updated_at`) VALUES (:titulo:, :descricao:, :preco_venda:, :preco_aluguel:, :finalidade:, :status:, :dormitorios:, :banheiros:, :garagem:, :area_total:, :area_construida:, :endereco:, :numero:, :complemento:, :caracteristicas:, :destaque:, :usuario_id:, :tipo_imovel_id:, :bairro_id:, :created_at:, :updated_at:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(838): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(797): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\ImovelController.php(94): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\ImovelController->store()
+10 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ImovelController))
+11 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-12 01:22:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:22:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-12 01:22:49 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`logs`, CONSTRAINT `logs_id_usuario_foreign` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION) in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `lo...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `lo...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `lo...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `lo...', Array, false)
+#4 C:\xampp\htdocs\imobiliario\app\Helpers\log_helper.php(23): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\imobiliario\app\Controllers\AuthController.php(76): registrar_log(2, 'Logout efetuado...')
+#6 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(933): App\Controllers\AuthController->logout()
+#7 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#8 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\imobiliario\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\imobiliario\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\imobiliario\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-11-12 01:22:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`logs`, CONSTRAINT `logs_id_usuario_foreign` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION)
+[Method: GET, Route: logout]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (:id_usuario:, :action:, :created_at:)', [...], false)
+ 2 APPPATH\Helpers\log_helper.php(23): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\AuthController.php(76): registrar_log(2, 'Logout efetuado.')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->logout()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:22:49 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`logs`, CONSTRAINT `logs_id_usuario_foreign` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (2, \'Logout efetuado.\', \'2025-11-12 01:22:49\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (2, \'Logout efetuado.\', \'2025-11-12 01:22:49\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (:id_usuario:, :action:, :created_at:)', [...], false)
+ 4 APPPATH\Helpers\log_helper.php(23): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\AuthController.php(76): registrar_log(2, 'Logout efetuado.')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->logout()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:22:49 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`logs`, CONSTRAINT `logs_id_usuario_foreign` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (2, \'Logout efetuado.\', \'2025-11-12 01:22:49\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (2, \'Logout efetuado.\', \'2025-11-12 01:22:49\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (2, \'Logout efetuado.\', \'2025-11-12 01:22:49\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (:id_usuario:, :action:, :created_at:)', [...], false)
+ 5 APPPATH\Helpers\log_helper.php(23): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\AuthController.php(76): registrar_log(2, 'Logout efetuado.')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->logout()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+DEBUG - 2025-11-12 01:22:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:22:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+DEBUG - 2025-11-12 01:22:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-11-12 01:22:54 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`logs`, CONSTRAINT `logs_id_usuario_foreign` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION) in C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php:327
+Stack trace:
+#0 C:\xampp\htdocs\imobiliario\system\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `lo...', 0)
+#1 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `lo...')
+#2 C:\xampp\htdocs\imobiliario\system\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `lo...')
+#3 C:\xampp\htdocs\imobiliario\system\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `lo...', Array, false)
+#4 C:\xampp\htdocs\imobiliario\app\Helpers\log_helper.php(23): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\xampp\htdocs\imobiliario\app\Controllers\AuthController.php(76): registrar_log(2, 'Logout efetuado...')
+#6 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(933): App\Controllers\AuthController->logout()
+#7 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+#8 C:\xampp\htdocs\imobiliario\system\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\imobiliario\system\Boot.php(363): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\imobiliario\system\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\imobiliario\public\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+CRITICAL - 2025-11-12 01:22:54 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`logs`, CONSTRAINT `logs_id_usuario_foreign` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION)
+[Method: GET, Route: logout]
+in SYSTEMPATH\Database\BaseConnection.php on line 684.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (:id_usuario:, :action:, :created_at:)', [...], false)
+ 2 APPPATH\Helpers\log_helper.php(23): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\AuthController.php(76): registrar_log(2, 'Logout efetuado.')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->logout()
+ 5 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 6 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:22:54 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`logs`, CONSTRAINT `logs_id_usuario_foreign` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 332.
+ 1 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (2, \'Logout efetuado.\', \'2025-11-12 01:22:54\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (2, \'Logout efetuado.\', \'2025-11-12 01:22:54\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (:id_usuario:, :action:, :created_at:)', [...], false)
+ 4 APPPATH\Helpers\log_helper.php(23): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\AuthController.php(76): registrar_log(2, 'Logout efetuado.')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->logout()
+ 7 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 8 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-11-12 01:22:54 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`imobiliaria`.`logs`, CONSTRAINT `logs_id_usuario_foreign` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 327.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(327): mysqli->query('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (2, \'Logout efetuado.\', \'2025-11-12 01:22:54\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(729): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (2, \'Logout efetuado.\', \'2025-11-12 01:22:54\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(646): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (2, \'Logout efetuado.\', \'2025-11-12 01:22:54\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2345): CodeIgniter\Database\BaseConnection->query('INSERT INTO `logs` (`id_usuario`, `action`, `created_at`) VALUES (:id_usuario:, :action:, :created_at:)', [...], false)
+ 5 APPPATH\Helpers\log_helper.php(23): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\AuthController.php(76): registrar_log(2, 'Logout efetuado.')
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AuthController->logout()
+ 8 SYSTEMPATH\CodeIgniter.php(507): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AuthController))
+ 9 SYSTEMPATH\CodeIgniter.php(354): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(363): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(68): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(59): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

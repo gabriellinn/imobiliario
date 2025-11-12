@@ -66,6 +66,11 @@ class BairroController extends BaseController
         ];
 
         $this->bairroModel->insert($dados);
+        $this->session->get('usuario_id');
+        registrar_log(
+            $this->session->get('usuario_id'),
+            'Bairro Criado: ' . $dados['nome']
+        );
 
         return redirect()->to('admin/bairro/listar')->with('sucesso', 'Bairro criado com sucesso!');
     }
@@ -83,6 +88,7 @@ class BairroController extends BaseController
         }
 
         $dados['bairro'] = $bairro;
+        
         return view('admin/bairro/formulario', $dados);
     }
 
@@ -114,6 +120,12 @@ class BairroController extends BaseController
         ];
 
         $this->bairroModel->update($id, $dados);
+        $this->session->get('usuario_id');
+        registrar_log(
+            $this->session->get('usuario_id'),
+            'Bairro Editado: ' . $dados['nome']
+        );
+
 
         return redirect()->to('admin/bairro/listar')->with('sucesso', 'Bairro atualizado com sucesso!');
     }

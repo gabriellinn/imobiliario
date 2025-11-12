@@ -15,7 +15,7 @@ class UsuarioModel extends Model
         'tipo'
     ];
 
-    protected $useTimestamps = true;
+    protected $useTimestamps = false;
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
 

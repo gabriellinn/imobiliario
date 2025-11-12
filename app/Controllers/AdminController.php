@@ -10,17 +10,21 @@ use CodeIgniter\HTTP\ResponseInterface;
  * AdminController
  * Gerencia o dashboard, a listagem de todos os usuários
  * e o CRUD específico de Corretores.
+ *
+ * @versao 2.0 (Com logs integrados)
  */
 class AdminController extends BaseController
 {
     protected $model;
-    protected $session; // Adicionado
+    protected $session;
 
-    // Usamos o construtor para carregar o model e a session
     public function __construct()
     {
+        // Carrega o helper de log que criamos
+         
+        
         $this->model = new UsuarioModel();
-        $this->session = session(); // Adicionado
+        $this->session = session();
     }
 
     /**
@@ -28,13 +32,10 @@ class AdminController extends BaseController
      */
     public function index()
     {
-        // --- INÍCIO DA CORREÇÃO ---
-        // Lógica que estava faltando: buscar o usuário logado
         $usuarioID = $this->session->get('usuario_id');
         
         if (!$usuarioID) {
-            // Isso não deve acontecer por causa do filtro de rota, mas é uma boa defesa
-             return redirect()->to('/login')->with('erro', 'Acesso negado.');
+            return redirect()->to('/login')->with('erro', 'Acesso negado.');
         }
 
         $usuario = $this->model->find($usuarioID);
@@ -43,7 +44,6 @@ class AdminController extends BaseController
         return view('admin/dashboard', [
             'usuario' => $usuario
         ]);
-        // --- FIM DA CORREÇÃO ---
     }
 
     /**
@@ -51,7 +51,6 @@ class AdminController extends BaseController
      */
     public function listarUsuarios()
     {
-        // Busca TODOS os usuários, sem filtro de 'tipo'
         $dados['usuarios'] = $this->model->findAll();
         
         // Aponta para a nova view que criamos
@@ -60,11 +59,9 @@ class AdminController extends BaseController
 
     /**
      * CREATE (C do CRUD) - Parte 1: Mostrar o formulário
-     * (Nome revertido de 'createCorretor' para 'create')
      */
     public function create()
     {
-        // Passa dados nulos para a view saber que é um NOVO cadastro
         $dados = [
             'corretor' => null,
             'page_title' => 'Novo Corretor'
@@ -75,7 +72,6 @@ class AdminController extends BaseController
 
     /**
      * STORE (C do CRUD) - Parte 2: Salvar os dados
-     * (Nome revertido de 'storeCorretor' para 'store')
      */
     public function store()
     {
@@ -89,24 +85,33 @@ class AdminController extends BaseController
 
         // 2. Tenta rodar a validação
         if (!$this->validate($regras)) {
-            // Se falhar, volta ao formulário com os erros
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
         }
 
-        // 3. Prepara os dados (SEM HASH, como solicitado)
+        // 3. Prepara os dados
         $dados = [
             'nome'  => $this->request->getPost('nome'),
             'email' => $this->request->getPost('email'),
-            // password_hash() removido. O Model cuidará disso.
             'senha' => $this->request->getPost('senha'),
-            'tipo'  => 'corretor' // Esta função especificamente cria um corretor
+            'tipo'  => 'corretor'
         ];
 
         // 4. Salva no banco
         try {
-            $this->model->insert($dados);
-            // 5. Redireciona para a NOVA lista de usuários
-            return redirect()->to(site_url('admin/listar'))->with('sucesso', 'Corretor cadastrado com sucesso!');
+            if ($this->model->insert($dados)) {
+                
+                // --- INÍCIO DA INTEGRAÇÃO DO LOG ---
+                $adminID = $this->session->get('usuario_id');
+                $novoCorretorID = $this->model->getInsertID(); // Pega o ID do usuário recém-criado
+                registrar_log(
+                    $adminID, 
+                    'Cadastrou novo corretor ID: ' . $novoCorretorID
+                );
+                // --- FIM DA INTEGRAÇÃO DO LOG ---
+
+                // 5. Redireciona
+                return redirect()->to(site_url('admin/listar'))->with('sucesso', 'Corretor cadastrado com sucesso!');
+            }
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('erro', 'Erro ao salvar: ' . $e->getMessage());
         }
@@ -114,13 +119,11 @@ class AdminController extends BaseController
 
     /**
      * EDIT (U do CRUD) - Parte 1: Mostrar o formulário
-     * (Nome revertido de 'editCorretor' para 'edit')
      */
     public function edit($id)
     {
         $corretor = $this->model->find($id);
 
-        // Validação extra: só edita se for do tipo 'corretor'
         if (empty($corretor) || $corretor['tipo'] !== 'corretor') {
             return redirect()->to(site_url('admin/listar'))->with('erro', 'Usuário não é um corretor válido.');
         }
@@ -130,22 +133,22 @@ class AdminController extends BaseController
             'page_title' => 'Editar Corretor'
         ];
 
-        // Reutiliza a mesma view do 'create', mas agora com dados
-        return view('admin/cadastrarcorretor', $dados);
+        // Reutiliza a mesma view do 'create'
+        // (Corrigido de 'admin/cadastrarcorretor' para 'admin/formulariocorretor')
+        return view('admin/formulariocorretor', $dados);
     }
 
     /**
      * UPDATE (U do CRUD) - Parte 2: Salvar as alterações
-     * (Nome revertido de 'updateCorretor' para 'update')
      */
     public function update($id)
     {
-        // 1. Validação (Email deve ser único, mas ignorando o ID atual)
+        // 1. Validação
         $regras = [
             'nome'  => 'required|min_length[3]',
             'email' => "required|valid_email|is_unique[usuarios.email,id,$id]",
-            'senha' => 'permit_empty|min_length[6]', // Senha é opcional no update
-            'confirmar_senha' => 'matches[senha]'    // Só valida se 'senha' for preenchida
+            'senha' => 'permit_empty|min_length[6]',
+            'confirmar_senha' => 'matches[senha]'
         ];
 
         if (!$this->validate($regras)) {
@@ -156,21 +159,29 @@ class AdminController extends BaseController
         $dados = [
             'nome'  => $this->request->getPost('nome'),
             'email' => $this->request->getPost('email'),
-            // O tipo não pode ser alterado aqui
         ];
 
-        // 3. Lógica da Senha (Só atualiza se uma nova for digitada)
+        // 3. Lógica da Senha
         $novaSenha = $this->request->getPost('senha');
         if (!empty($novaSenha)) {
-            // password_hash() removido.
             $dados['senha'] = $novaSenha;
         }
 
         // 4. Salva no banco
         try {
-            $this->model->update($id, $dados);
-            // 5. Redireciona para a NOVA lista de usuários
-            return redirect()->to(site_url('admin/listar'))->with('sucesso', 'Corretor atualizado com sucesso!');
+            if ($this->model->update($id, $dados)) {
+                
+                // --- INÍCIO DA INTEGRAÇÃO DO LOG ---
+                $adminID = $this->session->get('usuario_id');
+                registrar_log(
+                    $adminID,
+                    'Atualizou dados do corretor ID: ' . $id
+                );
+                // --- FIM DA INTEGRAÇÃO DO LOG ---
+
+                // 5. Redireciona
+                return redirect()->to(site_url('admin/listar'))->with('sucesso', 'Corretor atualizado com sucesso!');
+            }
         } catch (\Exception $e) {
             return redirect()->back()->withInput()->with('erro', 'Erro ao atualizar: ' . $e->getMessage());
         }
@@ -179,25 +190,33 @@ class AdminController extends BaseController
 
     /**
      * DELETE (D do CRUD)
-     * (Nome revertido de 'deleteCorretor' para 'delete')
      */
     public function delete($id)
     {
         try {
             $corretor = $this->model->find($id);
 
-            // Validação extra: só deleta se for 'corretor'
             if (empty($corretor) || $corretor['tipo'] !== 'corretor') {
                 return redirect()->to(site_url('admin/listar'))->with('erro', 'Usuário não é um corretor válido.');
             }
 
-            $this->model->delete($id);
-            // Redireciona para a NOVA lista de usuários
-            return redirect()->to(site_url('admin/listar'))->with('sucesso', 'Corretor excluído com sucesso!');
+            if ($this->model->delete($id)) {
+                
+                // --- INÍCIO DA INTEGRAÇÃO DO LOG ---
+                $adminID = $this->session->get('usuario_id');
+                registrar_log(
+                    $adminID,
+                    'Excluiu corretor ID: ' . $id
+                );
+                // --- FIM DA INTEGRAÇÃO DO LOG ---
+
+                // Redireciona
+                return redirect()->to(site_url('admin/listar'))->with('sucesso', 'Corretor excluído com sucesso!');
+            }
+
         } catch (\Exception $e) {
-            // Captura erro de chave estrangeira, etc.
+            // Captura erro de chave estrangeira (ex: se o corretor tiver imóveis ligados a ele)
             return redirect()->to(site_url('admin/listar'))->with('erro', 'Erro ao excluir: ' . $e->getMessage());
         }
     }
 }
-

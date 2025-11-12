@@ -21,7 +21,7 @@
 
     <?php
         // Define a URL da ação do formulário (Salvar ou Atualizar)
-        $action_url = (empty($imovel)) ? site_url('imoveis/salvar') : site_url('imoveis/atualizar/' . $imovel['id']);
+        $action_url = (empty($imovel)) ? site_url('imovel/salvar') : site_url('imovel/atualizar/' . $imovel['id']);
     ?>
 
     <!-- 1. ACTION ATUALIZADA E CSRF ADICIONADO -->
