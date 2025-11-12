@@ -47,7 +47,7 @@ class CreateFotosImoveisTable extends Migration
         
         // Chave Estrangeira
         // Isto garante que se um imóvel for apagado, todas as suas fotos são apagadas juntas.
-        $this->forge->addForeignKey('imovel_id', 'imoveis', 'id', 'CASCADE', 'CASCADE');
+       
         
         $this->forge->createTable('fotos_imoveis');
     }

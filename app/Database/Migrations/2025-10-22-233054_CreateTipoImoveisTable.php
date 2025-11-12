@@ -29,7 +29,7 @@ class CreateTipoImoveisTable extends Migration
     ]);
 
         $this->forge->addKey('id', true);
-        $this->forge->addForeignKey('imovel_id','imoveis','id','SET NULL','NO ACTION');
+      
         $this->forge->createTable('tipos_imoveis');
     }
 
