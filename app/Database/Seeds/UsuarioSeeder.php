@@ -8,8 +8,18 @@ class UsuarioSeeder extends Seeder
 {
     public function run()
     {
-        // Pega a instância do Query Builder para a tabela 'usuarios'
-        $builder = $this->db->table('usuarios');
+        // Verifica se a tabela existe
+        if (!$this->db->tableExists('usuarios')) {
+            echo "Tabela 'usuarios' não existe. Execute as migrations primeiro.\n";
+            return;
+        }
+
+        // Verifica se já existem usuários para evitar duplicatas
+        $existingUsers = $this->db->table('usuarios')->countAllResults();
+        if ($existingUsers > 0) {
+            echo "Usuários já existem na tabela. Pulando seed.\n";
+            return;
+        }
 
         // Define os dados do admin
         $data = [
@@ -34,8 +44,9 @@ class UsuarioSeeder extends Seeder
         ];
 
 
-        // Insere os dados no banco
-        $builder->insert($data);
+        // Insere os dados no banco (usa insertBatch para múltiplos registros)
+        $this->db->table('usuarios')->insertBatch($data);
         
+        echo "Usuários criados com sucesso!\n";
     }
 }

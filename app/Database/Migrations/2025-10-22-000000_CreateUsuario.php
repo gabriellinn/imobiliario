@@ -4,49 +4,58 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateBairroTable extends Migration
+class CreateUsuario extends Migration
 {
     public function up()
     {
-$this->forge->addField([
+        // Check if table already exists
+        if ($this->db->tableExists('usuarios')) {
+            return;
+        }
+
+        $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
                 'constraint'     => 11,
                 'unsigned'       => true,
-                'auto_increment' => true,
+                'auto_increment' => true
             ],
+            
             'nome' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
                 'null'       => false,
             ],
-            'cidade' => [
+
+            'email' => [
                 'type'       => 'VARCHAR',
                 'constraint' => '100',
                 'null'       => false,
+                'unique'     => true,
             ],
-            'estado' => [
-                'type'       => 'CHAR',
-                'constraint' => '2',
-                'null'       => false,
-            ],
-            'cep_inicial' => [
+            
+            'senha' => [
                 'type'       => 'VARCHAR',
-                'constraint' => '9',
+                'constraint' => '255',
                 'null'       => false,
             ],
-            'cep_final' => [
-                'type'       => 'VARCHAR',
-                'constraint' => '9',
+
+            'tipo' => [
+                'type'       => 'ENUM',
+                'constraint' => ['admin', 'corretor'],
                 'null'       => false,
-            ],
+            ]
         ]);
+
+        // Adiciona a Chave Primária
         $this->forge->addKey('id', true);
-        $this->forge->createTable('bairros');        
+        
+        // Cria a tabela
+        $this->forge->createTable('usuarios');
     }
 
     public function down()
     {
-        $this->forge->dropTable('bairros');
+        $this->forge->dropTable('usuarios');
     }
 }

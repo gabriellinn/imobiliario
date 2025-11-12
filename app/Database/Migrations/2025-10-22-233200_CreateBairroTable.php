@@ -4,12 +4,12 @@ namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
 
-class CreateTipoImoveisTable extends Migration
+class CreateBairroTable extends Migration
 {
     public function up()
     {
         // Check if table already exists
-        if ($this->db->tableExists('tipos_imoveis')) {
+        if ($this->db->tableExists('bairros')) {
             return;
         }
 
@@ -25,9 +25,25 @@ class CreateTipoImoveisTable extends Migration
                 'constraint' => '100',
                 'null'       => false,
             ],
-            'descricao' => [
-                'type' => 'TEXT',
-                'null' => true,
+            'cidade' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '100',
+                'null'       => false,
+            ],
+            'estado' => [
+                'type'       => 'CHAR',
+                'constraint' => '2',
+                'null'       => false,
+            ],
+            'cep_inicial' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '9',
+                'null'       => false,
+            ],
+            'cep_final' => [
+                'type'       => 'VARCHAR',
+                'constraint' => '9',
+                'null'       => false,
             ],
             'created_at' => [
                 'type' => 'DATETIME',
@@ -38,14 +54,13 @@ class CreateTipoImoveisTable extends Migration
                 'null' => true,
             ],
         ]);
-
         $this->forge->addKey('id', true);
-      
-        $this->forge->createTable('tipos_imoveis');
+        $this->forge->createTable('bairros');        
     }
 
     public function down()
     {
-        $this->forge->dropTable('tipos_imoveis');
+        $this->forge->dropTable('bairros');
     }
 }
+

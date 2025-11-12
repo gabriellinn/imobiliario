@@ -19,7 +19,7 @@ if (! function_exists('registrar_log')) {
             'created_at' => date('Y-m-d H:i:s'), // Data e hora atual
         ];
 
-        // Insere os dados na tabela 'logs'
+        // Insere os dados na tabela 'logs'p
         $db->table('logs')->insert($data);
     }
 }

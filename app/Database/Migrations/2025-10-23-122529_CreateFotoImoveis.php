@@ -8,6 +8,11 @@ class CreateFotosImoveisTable extends Migration
 {
     public function up()
     {
+        // Check if table already exists
+        if ($this->db->tableExists('fotos_imoveis')) {
+            return;
+        }
+
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
@@ -47,7 +52,7 @@ class CreateFotosImoveisTable extends Migration
         
         // Chave Estrangeira
         // Isto garante que se um imóvel for apagado, todas as suas fotos são apagadas juntas.
-       
+        $this->forge->addForeignKey('imovel_id', 'imoveis', 'id', 'CASCADE', 'CASCADE');
         
         $this->forge->createTable('fotos_imoveis');
     }

@@ -136,8 +136,20 @@ class BairroController extends BaseController
      */
     public function delete($id = null): ResponseInterface
     {
+        $bairro = $this->bairroModel->find($id);
+        
+        if (!$bairro) {
+            return redirect()->to('admin/bairro/listar')->with('erro', 'Bairro não encontrado.');
+        }
+
         try {
             $this->bairroModel->delete($id);
+            
+            registrar_log(
+                $this->session->get('usuario_id'),
+                'Bairro Excluído: ' . ($bairro['nome'] ?? 'ID ' . $id)
+            );
+            
             return redirect()->to('admin/bairro/listar')->with('sucesso', 'Bairro excluído com sucesso!');
         } catch (\Exception $e) {
             return redirect()->to('admin/bairro/listar')->with('erro', 'Erro ao excluir: Este bairro pode estar em uso.');

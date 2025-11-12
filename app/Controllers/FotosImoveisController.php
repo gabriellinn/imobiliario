@@ -74,6 +74,13 @@ class FotosImoveisController extends BaseController
             'capa' => false // Novas fotos nunca são capa por defeito
         ]);
 
+        // Log da ação
+        $imovel = $this->imovelModel->find($imovel_id);
+        registrar_log(
+            $this->session->get('usuario_id'),
+            'Foto adicionada ao imóvel: ' . ($imovel['titulo'] ?? 'ID ' . $imovel_id) . ' - Arquivo: ' . $file->getClientName()
+        );
+
         return redirect()->back()->with('sucesso', 'Foto enviada com sucesso!');
     }
 
@@ -99,6 +106,13 @@ class FotosImoveisController extends BaseController
         $this->photoModel->update($id, ['capa' => 1]);
         $this->photoModel->db->transComplete();
 
+        // Log da ação
+        $imovel = $this->imovelModel->find($imovel_id);
+        registrar_log(
+            $this->session->get('usuario_id'),
+            'Foto de capa atualizada para o imóvel: ' . ($imovel['titulo'] ?? 'ID ' . $imovel_id) . ' - Foto ID: ' . $id
+        );
+
         return redirect()->back()->with('sucesso', 'Foto de capa atualizada!');
     }
 
@@ -122,7 +136,14 @@ class FotosImoveisController extends BaseController
             @unlink($filePath); // O '@' suprime erros se o ficheiro não puder ser apagado
         }
 
-        // 3. Apagar do Banco
+        // 3. Log antes de apagar (para ter a informação do imóvel)
+        $imovel = $this->imovelModel->find($foto['imovel_id']);
+        registrar_log(
+            $this->session->get('usuario_id'),
+            'Foto excluída do imóvel: ' . ($imovel['titulo'] ?? 'ID ' . $foto['imovel_id']) . ' - Arquivo: ' . $foto['nome_arquivo']
+        );
+
+        // 4. Apagar do Banco
         $this->photoModel->delete($id);
 
         return redirect()->back()->with('sucesso', 'Foto excluída com sucesso!');

@@ -7,72 +7,63 @@
     <?= $this->include('partials/header') ?>
 </head>
 <body>
+    <div class="container">
+        <div class="page-header">
+            <h1>Lista de Usuários</h1>
+        </div>
 
-<div>
-    <!-- Título corrigido -->
-    <h1>Lista de Usuários</h1>
-
-    <!-- Bloco para exibir mensagens de feedback -->
-    <?php if (session()->getFlashdata('sucesso')): ?>
-        <p><?= esc(session()->getFlashdata('sucesso')) ?></p>
-    <?php endif; ?>
-    <?php if (session()->getFlashdata('erro')): ?>
-        <p><?= esc(session()->getFlashdata('erro')) ?></p>
-    <?php endif; ?>
-
-    <!-- 
-      * Link corrigido *
-      * Aponta para 'admin/formulariocorretor', como definido em Routes.php
-    -->
-    <a href="<?= site_url('admin/formulariocorretor') ?>">Novo Corretor</a>
-
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Tipo</th> <!-- Adicionada coluna 'Tipo' -->
-            <th>Ações</th>
-        </tr>
-        
-        <!-- 
-          * Variáveis corrigidas *
-          * Loop agora usa $usuarios (enviado pelo controller)
-        -->
-        <?php if (isset($usuarios) && !empty($usuarios)): ?>
-            <?php foreach ($usuarios as $usuario): ?>
-            <tr>
-                <td><?= esc($usuario['id']) ?></td>
-                <td><?= esc($usuario['nome']) ?></td>
-                <td><?= esc($usuario['email']) ?></td>
-                <td><?= esc($usuario['tipo']) ?></td>
-                <td>
-                    <?php 
-                    // Lógica do AdminController:
-                    // Só permite editar/excluir se for 'corretor'
-                    if ($usuario['tipo'] === 'corretor'): 
-                    ?>
-                        <!-- 
-                          * Links Corrigidos *
-                          * Apontam para 'admin/edit' e 'admin/delete', como definido em Routes.php
-                        -->
-                        <a href="<?= site_url('admin/edit/' . $usuario['id']) ?>">Editar</a> |
-                        <a href="<?= site_url('admin/delete/' . $usuario['id']) ?>">Excluir</a>
-                    <?php else: ?>
-                        <!-- Admin não pode ser editado por aqui -->
-                        (Admin)
-                    <?php endif; ?>
-                </td>
-            </tr>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <tr>
-                <td colspan="5" style="text-align: center;">Nenhum usuário encontrado.</td>
-            </tr>
+        <?php if (session()->getFlashdata('sucesso')): ?>
+            <div class="alert alert-success"><?= esc(session()->getFlashdata('sucesso')) ?></div>
         <?php endif; ?>
-    </table>
-</div>
+        <?php if (session()->getFlashdata('erro')): ?>
+            <div class="alert alert-error"><?= esc(session()->getFlashdata('erro')) ?></div>
+        <?php endif; ?>
 
+        <div class="actions-bar">
+            <a href="<?= site_url('admin/formulariocorretor') ?>" class="btn btn-primary">+ Novo Corretor</a>
+        </div>
+
+        <div class="card">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Tipo</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (isset($usuarios) && !empty($usuarios)): ?>
+                        <?php foreach ($usuarios as $usuario): ?>
+                            <tr>
+                                <td><?= esc($usuario['id']) ?></td>
+                                <td><?= esc($usuario['nome']) ?></td>
+                                <td><?= esc($usuario['email']) ?></td>
+                                <td>
+                                    <span class="badge <?= $usuario['tipo'] == 'admin' ? 'badge-primary' : 'badge-success' ?>">
+                                        <?= esc(ucfirst($usuario['tipo'])) ?>
+                                    </span>
+                                </td>
+                                <td>
+                                    <?php if ($usuario['tipo'] === 'corretor'): ?>
+                                        <a href="<?= site_url('admin/edit/' . $usuario['id']) ?>" class="btn btn-secondary">Editar</a>
+                                        <a href="<?= site_url('admin/delete/' . $usuario['id']) ?>" class="btn btn-danger" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
+                                    <?php else: ?>
+                                        <span style="color: var(--text-secondary);">(Admin)</span>
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="5" class="text-center">Nenhum usuário encontrado.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </body>
 </html>
-

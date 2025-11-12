@@ -9,6 +9,7 @@ $routes->get('/', 'Home::index');
 
 // --- Rotas Públicas (Login, Perfil) ---
 $routes->get('/paginainicial', 'Home::index');
+$routes->get('/imovel/(:num)', 'Home::show/$1'); // Rota pública para ver detalhes do imóvel
 $routes->get('/login', 'AuthController::mostrarTelaLogin');
 $routes->post('/processarLogin', 'AuthController::processarLogin');
 $routes->get('/logout', 'AuthController::logout');
@@ -30,11 +31,11 @@ $routes->group('admin', ['filter' => 'admin'], static function ($routes) {
     
     $routes->group('tipoimoveis', static function ($routes) {
         $routes->get('listar', 'TipoImovelController::index');
-        $routes->get('create', 'TipoImovelController::create');
-        $routes->post('store', 'TipoImovelController::store');
-        $routes->get('edit/(:num)', 'TipoImovelController::edit/$1');
-        $routes->post('update/(:num)', 'TipoImovelController::update/$1');
-        $routes->get('delete/(:num)', 'TipoImovelController::delete/$1');
+        $routes->get('criar', 'TipoImovelController::create');
+        $routes->post('salvar', 'TipoImovelController::store');
+        $routes->get('editar/(:num)', 'TipoImovelController::edit/$1');
+        $routes->post('atualizar/(:num)', 'TipoImovelController::update/$1');
+        $routes->get('excluir/(:num)', 'TipoImovelController::delete/$1');
     });
 
     $routes->group('bairro', static function ($routes) {

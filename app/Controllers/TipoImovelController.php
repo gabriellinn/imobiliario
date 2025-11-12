@@ -23,11 +23,8 @@ class TipoImovelController extends BaseController
      */
     public function index(): string|ResponseInterface
     {
-        // Verificação de Admin removida (agora tratada pelo Filtro de Rota)
-        
+        // A verificação de Admin é feita pelo Filtro de Rota
         $dados['tipos'] = $this->tipoImovelModel->findAll();
-
-        // ATENÇÃO: O seu código aponta para 'tipoimoveis' (plural)
         return view('admin/tipoimoveis/listar', $dados);
     }
 
@@ -37,8 +34,6 @@ class TipoImovelController extends BaseController
      */
     public function create(): string|ResponseInterface
     {
-        // Verificação de Admin removida
-        
         $dados['tipo'] = null; // Indica que é um novo cadastro
         return view('admin/tipoimoveis/formulario', $dados);
     }
@@ -49,8 +44,6 @@ class TipoImovelController extends BaseController
      */
     public function store(): ResponseInterface
     {
-        // Verificação de Admin removida
-
         // Regras de validação
         $regras = [
             'nome' => 'required|min_length[3]|is_unique[tipos_imoveis.nome]',
@@ -67,6 +60,11 @@ class TipoImovelController extends BaseController
         ];
 
         $this->tipoImovelModel->insert($dados);
+        
+        registrar_log(
+            $this->session->get('usuario_id'),
+            'Tipo de Imóvel Criado: ' . $dados['nome']
+        );
 
         return redirect()->to('admin/tipoimoveis/listar')->with('sucesso', 'Tipo de imóvel criado com sucesso!');
     }
@@ -77,8 +75,6 @@ class TipoImovelController extends BaseController
      */
     public function edit($id = null): string|ResponseInterface
     {
-        // Verificação de Admin removida
-
         $tipo = $this->tipoImovelModel->find($id);
 
         if (!$tipo) {
@@ -95,8 +91,6 @@ class TipoImovelController extends BaseController
      */
     public function update($id = null): ResponseInterface
     {
-        // Verificação de Admin removida
-
         // Regras de validação (ignora o ID atual na verificação de 'is_unique')
         $regras = [
             'nome' => "required|min_length[3]|is_unique[tipos_imoveis.nome,id,$id]",
@@ -113,6 +107,11 @@ class TipoImovelController extends BaseController
         ];
 
         $this->tipoImovelModel->update($id, $dados);
+        
+        registrar_log(
+            $this->session->get('usuario_id'),
+            'Tipo de Imóvel Editado: ' . $dados['nome']
+        );
 
         return redirect()->to('admin/tipoimoveis/listar')->with('sucesso', 'Tipo de imóvel atualizado com sucesso!');
     }
@@ -123,11 +122,20 @@ class TipoImovelController extends BaseController
      */
     public function delete($id = null): ResponseInterface
     {
-        // Verificação de Admin removida
+        $tipo = $this->tipoImovelModel->find($id);
+
+        if (!$tipo) {
+            return redirect()->to('admin/tipoimoveis/listar')->with('erro', 'Tipo de imóvel não encontrado.');
+        }
 
         try {
-            // Correção: Usar o model correto
             $this->tipoImovelModel->delete($id);
+            
+            registrar_log(
+                $this->session->get('usuario_id'),
+                'Tipo de Imóvel Excluído: ' . ($tipo['nome'] ?? 'ID ' . $id)
+            );
+            
             return redirect()->to('admin/tipoimoveis/listar')->with('sucesso', 'Tipo de imóvel excluído com sucesso!');
         } catch (\Exception $e) {
             // Captura erro (ex: chave estrangeira em uso)

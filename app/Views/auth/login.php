@@ -3,68 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= $titulo ?? 'Login - Sistema Imobiliário' ?></title>
+    <title>Login - Sistema Imobiliário</title>
     <?= $this->include('partials/header') ?>
 </head>
 <body>
- 
-    <div>
-    
-        <div>
+    <div class="container container-sm">
+        <div class="card" style="max-width: 400px; margin: var(--spacing-xl) auto;">
+            <div class="page-header">
+                <h1>Login</h1>
+            </div>
 
-            <h2>Login</h2>
-
-            <!-- Bloco unificado para exibir erros -->
-            <?php if (session()->getFlashdata('erro')) : ?>
-                <div>
-                    <strong>Ocorreram os seguintes erros:</strong>
-                    <?= session()->getFlashdata('erro') ?>
-                </div>
+            <?php if (session()->getFlashdata('erro')): ?>
+                <div class="alert alert-error"><?= esc(session()->getFlashdata('erro')) ?></div>
             <?php endif; ?>
 
-            <!-- Bloco unificado para exibir sucesso -->
-            <?php if (session()->getFlashdata('sucesso')) : ?>
-                <div>
-                    <strong>Sucesso!</strong>
-                    <?= session()->getFlashdata('sucesso') ?>
-                </div>
+            <?php if (session()->getFlashdata('sucesso')): ?>
+                <div class="alert alert-success"><?= esc(session()->getFlashdata('sucesso')) ?></div>
             <?php endif; ?>
 
             <form action="<?= base_url('processarLogin') ?>" method="post">
-                <div>
-                    <label for="email">
-                        Email:
-                    </label>
+                <?= csrf_field() ?>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
                     <input type="email" id="email" name="email" value="<?= old('email') ?>" required>
                 </div>
 
-                <div>
-                    <label for="senha">
-                        Senha:
-                    </label>
+                <div class="form-group">
+                    <label for="senha">Senha</label>
                     <input type="password" id="senha" name="senha" required>
                 </div>
 
-                <div>
-                    <button type="submit">
-                        Entrar
-                    </button>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Entrar</button>
                 </div>
             </form>
-        </div>
 
-        <div>
-            <div>
-                <h3>Dados de Admin:</h3>
-                <p><strong>Email:</strong> admin@sistema.com</p>
-                <p><strong>Senha:</strong> 123456</p>
+            <div class="card" style="margin-top: var(--spacing-md); background-color: var(--bg-secondary);">
+                <h3 style="font-size: 1rem; margin-bottom: var(--spacing-sm);">Dados de Teste:</h3>
+                <p style="font-size: 0.875rem; margin: var(--spacing-xs) 0;"><strong>Email:</strong> admin@sistema.com</p>
+                <p style="font-size: 0.875rem; margin: var(--spacing-xs) 0;"><strong>Senha:</strong> 123456</p>
             </div>
-            
-            <a href="<?= base_url('/') ?>">
-                Voltar para o site
-            </a>
+
+            <div class="text-center" style="margin-top: var(--spacing-md);">
+                <a href="<?= base_url('/') ?>" class="btn btn-secondary">Voltar para o site</a>
+            </div>
         </div>
     </div>
-
 </body>
 </html>

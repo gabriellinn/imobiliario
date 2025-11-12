@@ -8,6 +8,11 @@ class CreateImoveisTable extends Migration
 {
     public function up()
     {
+        // Check if table already exists
+        if ($this->db->tableExists('imoveis')) {
+            return;
+        }
+
         $this->forge->addField([
             'id' => [
                 'type'           => 'INT',
@@ -140,3 +145,4 @@ class CreateImoveisTable extends Migration
         $this->forge->dropTable('imoveis');
     }
 }
+

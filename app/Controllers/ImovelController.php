@@ -68,34 +68,49 @@ class ImovelController extends BaseController
 
         $dados = $this->request->getPost();
 
+        // Valida e processa tipo_imovel_id
+        $tipoImovelId = !empty($dados['tipo_imovel_id']) ? (int)$dados['tipo_imovel_id'] : null;
+        
+        // Se tipo_imovel_id foi fornecido, valida se existe
+        if ($tipoImovelId !== null) {
+            $tipoImovelModel = new \App\Models\TipoImovelModel();
+            $tipoImovel = $tipoImovelModel->find($tipoImovelId);
+            if (!$tipoImovel) {
+                return redirect()->back()->withInput()->with('erro', 'Tipo de imóvel inválido. Por favor, execute o seeder primeiro.');
+            }
+        }
+
         // Corrigi o bug de 'dados' aninhado ('finalidade' e 'status')
         $imovel = [
             'titulo' => $dados['titulo'] ?? null,
             'descricao' => $dados['descricao'] ?? null,
-            'preco_venda' => $dados['preco_venda'] ?? null,
-            'preco_aluguel' => $dados['preco_aluguel'] ?? null,
+            'preco_venda' => !empty($dados['preco_venda']) ? $dados['preco_venda'] : null,
+            'preco_aluguel' => !empty($dados['preco_aluguel']) ? $dados['preco_aluguel'] : null,
             'finalidade' => $dados['finalidade'] ?? null, // Corrigido
             'status' => $dados['status'] ?? null,     // Corrigido
-            'dormitorios' => $dados['dormitorios'] ?? null,
-            'banheiros' => $dados['banheiros'] ?? null,
-            'garagem' => $dados['garagem'] ?? null,
-            'area_total' => $dados['area_total'] ?? null,
-            'area_construida' => $dados['area_construida'] ?? null,
+            'dormitorios' => !empty($dados['dormitorios']) ? (int)$dados['dormitorios'] : 0,
+            'banheiros' => !empty($dados['banheiros']) ? (int)$dados['banheiros'] : 0,
+            'garagem' => !empty($dados['garagem']) ? (int)$dados['garagem'] : 0,
+            'area_total' => !empty($dados['area_total']) ? $dados['area_total'] : null,
+            'area_construida' => !empty($dados['area_construida']) ? $dados['area_construida'] : null,
             'endereco' => $dados['endereco'] ?? null,
             'numero' => $dados['numero'] ?? null,
             'complemento' => $dados['complemento'] ?? null,
             'caracteristicas' => $dados['caracteristicas'] ?? null,
-            'destaque' => $dados['destaque'] ?? null,
+            'destaque' => !empty($dados['destaque']) ? 1 : 0,
             'usuario_id' => $this->session->get('usuario_id'), // Garante que é do usuário logado
-            'tipo_imovel_id' => $dados['tipo_imovel_id'] ?? null,
-            'bairro_id' => '1', // Mantendo sua lógica
+            'tipo_imovel_id' => $tipoImovelId,
+            'bairro_id' => !empty($dados['bairro_id']) ? (int)$dados['bairro_id'] : null,
         ];
 
-        $this->imovelModel->insert($imovel);
-        $this->session->get('usuario_id');
+        try {
+            $this->imovelModel->insert($imovel);
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->with('erro', 'Erro ao cadastrar imóvel: ' . $e->getMessage());
+        }
         registrar_log(
             $this->session->get('usuario_id'),
-            'Imóvel Criado: ' . $dados['nome']
+            'Imóvel Criado: ' . ($dados['titulo'] ?? 'Sem título')
         );
 
 
@@ -149,32 +164,47 @@ class ImovelController extends BaseController
 
         $dados = $this->request->getPost();
 
+        // Valida e processa tipo_imovel_id
+        $tipoImovelId = !empty($dados['tipo_imovel_id']) ? (int)$dados['tipo_imovel_id'] : null;
+        
+        // Se tipo_imovel_id foi fornecido, valida se existe
+        if ($tipoImovelId !== null) {
+            $tipoImovelModel = new \App\Models\TipoImovelModel();
+            $tipoImovel = $tipoImovelModel->find($tipoImovelId);
+            if (!$tipoImovel) {
+                return redirect()->back()->withInput()->with('erro', 'Tipo de imóvel inválido.');
+            }
+        }
+
         $dadosParaAtualizar = [
             'titulo' => $dados['titulo'] ?? null,
             'descricao' => $dados['descricao'] ?? null,
-            'preco_venda' => $dados['preco_venda'] ?? null,
-            'preco_aluguel' => $dados['preco_aluguel'] ?? null,
+            'preco_venda' => !empty($dados['preco_venda']) ? $dados['preco_venda'] : null,
+            'preco_aluguel' => !empty($dados['preco_aluguel']) ? $dados['preco_aluguel'] : null,
             'finalidade' => $dados['finalidade'] ?? null,
             'status' => $dados['status'] ?? null,
-            'dormitorios' => $dados['dormitorios'] ?? null,
-            'banheiros' => $dados['banheiros'] ?? null,
-            'garagem' => $dados['garagem'] ?? null,
-            'area_total' => $dados['area_total'] ?? null,
-            'area_construida' => $dados['area_construida'] ?? null,
+            'dormitorios' => !empty($dados['dormitorios']) ? (int)$dados['dormitorios'] : 0,
+            'banheiros' => !empty($dados['banheiros']) ? (int)$dados['banheiros'] : 0,
+            'garagem' => !empty($dados['garagem']) ? (int)$dados['garagem'] : 0,
+            'area_total' => !empty($dados['area_total']) ? $dados['area_total'] : null,
+            'area_construida' => !empty($dados['area_construida']) ? $dados['area_construida'] : null,
             'endereco' => $dados['endereco'] ?? null,
             'numero' => $dados['numero'] ?? null,
             'complemento' => $dados['complemento'] ?? null,
             'caracteristicas' => $dados['caracteristicas'] ?? null,
-            'destaque' => $dados['destaque'] ?? null,
-            'tipo_imovel_id' => $dados['tipo_imovel_id'] ?? null,
+            'destaque' => !empty($dados['destaque']) ? 1 : 0,
+            'tipo_imovel_id' => $tipoImovelId,
             // Não atualiza usuario_id ou bairro_id
         ];
 
-        $this->imovelModel->update($id, $dadosParaAtualizar);
-        $this->session->get('usuario_id');
+        try {
+            $this->imovelModel->update($id, $dadosParaAtualizar);
+        } catch (\Exception $e) {
+            return redirect()->back()->withInput()->with('erro', 'Erro ao atualizar imóvel: ' . $e->getMessage());
+        }
         registrar_log(
             $this->session->get('usuario_id'),
-            'Imóvel Criado: ' . $dadosParaAtualizar['nome']
+            'Imóvel Atualizado: ' . ($dadosParaAtualizar['titulo'] ?? 'Sem título')
         );
 
 
@@ -192,12 +222,6 @@ class ImovelController extends BaseController
             return redirect()->to('/login');
         }
         $usuario_id = $this->session->get('usuario_id');
-        $this->session->get('usuario_id');
-        registrar_log(
-            $this->session->get('usuario_id'),
-            'Bairro Criado: ' . $dados['nome']
-        );
-
 
         $imovel = $this->imovelModel->find($id);
 
@@ -207,8 +231,13 @@ class ImovelController extends BaseController
             return redirect()->to('/imovel/listar')->with('erro', 'Imóvel não encontrado ou acesso negado.');
         }
 
+        registrar_log(
+            $this->session->get('usuario_id'),
+            'Imóvel Excluído: ' . ($imovel['titulo'] ?? 'ID ' . $id)
+        );
+        
         $this->imovelModel->delete($id);
-         // CORREÇÃO: Redireciona para '/imovel/listar' (singular, da nova rota)
+        // CORREÇÃO: Redireciona para '/imovel/listar' (singular, da nova rota)
         return redirect()->to('/imovel/listar')->with('sucesso', 'Imóvel excluído com sucesso!');
     }
 }
