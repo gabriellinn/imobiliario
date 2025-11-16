@@ -2,57 +2,90 @@
 
 namespace App\Controllers;
 
-use CodeIgniter\Controller;
-use CodeIgniter\HTTP\CLIRequest;
-use CodeIgniter\HTTP\IncomingRequest;
-use CodeIgniter\HTTP\RequestInterface;
-use CodeIgniter\HTTP\ResponseInterface;
-use Psr\Log\LoggerInterface;
+// Estas são classes do CodeIgniter 4 que estamos importando
+use CodeIgniter\Controller; // Classe base para todos os controllers
+use CodeIgniter\HTTP\CLIRequest; // Para requisições via linha de comando
+use CodeIgniter\HTTP\IncomingRequest; // Para requisições HTTP normais (GET, POST, etc)
+use CodeIgniter\HTTP\RequestInterface; // Interface para requisições
+use CodeIgniter\HTTP\ResponseInterface; // Interface para respostas
+use Psr\Log\LoggerInterface; // Interface para logging (padrão PSR-3)
 
 /**
- * Class BaseController
- *
- * BaseController provides a convenient place for loading components
- * and performing functions that are needed by all your controllers.
- * Extend this class in any new controllers:
- *     class Home extends BaseController
- *
- * For security be sure to declare any new methods as protected or private.
+ * BaseController - Controlador Base
+ * 
+ * Esta classe é a base para todos os outros controllers da aplicação.
+ * Qualquer funcionalidade comum a todos os controllers deve ser colocada aqui.
+ * 
+ * POR QUE USAR?
+ * - Evita repetir código em vários controllers
+ * - Centraliza configurações comuns
+ * - Facilita manutenção
+ * 
+ * COMO FUNCIONA?
+ * Todos os outros controllers herdam desta classe usando: 
+ * class MeuController extends BaseController
+ * 
+ * Assim, eles automaticamente têm acesso a tudo que está aqui.
  */
 abstract class BaseController extends Controller
 {
     /**
-     * Instance of the main Request object.
-     *
+     * Propriedade para armazenar o objeto Request
+     * 
+     * O Request contém todas as informações sobre a requisição HTTP:
+     * - Dados do formulário ($_POST)
+     * - Parâmetros da URL ($_GET)
+     * - Cabeçalhos HTTP
+     * - IP do usuário, etc.
+     * 
      * @var CLIRequest|IncomingRequest
+     * Pode ser uma requisição via CLI (linha de comando) ou HTTP normal
      */
     protected $request;
 
     /**
-     * An array of helpers to be loaded automatically upon
-     * class instantiation. These helpers will be available
-     * to all other controllers that extend BaseController.
-     *
+     * Array de helpers que serão carregados automaticamente
+     * 
+     * HELPERS são funções auxiliares que facilitam tarefas comuns.
+     * Exemplos:
+     * - 'log' = helper para registrar logs (que criamos)
+     * - 'form' = helper para criar formulários
+     * - 'url' = helper para criar URLs
+     * - 'date' = helper para trabalhar com datas
+     * 
+     * Como este helper está aqui, TODOS os controllers que herdam desta classe
+     * terão acesso à função registrar_log() automaticamente.
+     * 
      * @var list<string>
+     * Lista de strings com os nomes dos helpers
      */
     protected $helpers = ['log'];
 
     /**
-     * Be sure to declare properties for any property fetch you initialized.
-     * The creation of dynamic property is deprecated in PHP 8.2.
-     */
-    // protected $session;
-
-    /**
+     * Método chamado automaticamente pelo CodeIgniter quando o controller é criado
+     * 
+     * Este é o método de inicialização do controller.
+     * É executado ANTES de qualquer método público (index, store, etc).
+     * 
+     * @param RequestInterface $request Objeto com dados da requisição
+     * @param ResponseInterface $response Objeto para criar a resposta
+     * @param LoggerInterface $logger Objeto para registrar logs
      * @return void
      */
     public function initController(RequestInterface $request, ResponseInterface $response, LoggerInterface $logger)
     {
-        // Do Not Edit This Line
+        // NÃO EDITE ESTA LINHA!
+        // Chama o método initController da classe pai (Controller)
+        // Isso garante que todas as inicializações básicas do CodeIgniter sejam feitas
         parent::initController($request, $response, $logger);
 
-        // Preload any models, libraries, etc, here.
-
-        // E.g.: $this->session = service('session');
+        // AQUI você pode adicionar código que será executado em TODOS os controllers
+        // Exemplo: inicializar sessão, carregar modelos comuns, etc.
+        
+        // Exemplo comentado: carregar a sessão
+        // $this->session = service('session');
+        // 
+        // service() é uma função do CodeIgniter que retorna uma instância de um serviço
+        // Exemplos: service('session'), service('validation'), service('database'), etc.
     }
 }
