@@ -85,7 +85,7 @@
                 <?php foreach ($imoveis as $imovel): ?>
                     <a href="<?= site_url('imovel/' . $imovel['id']) ?>" class="imovel-card <?= $imovel['destaque'] ? 'destaque' : '' ?>">
                         <?php if ($imovel['foto_capa']): ?>
-                            <img src="<?= esc($imovel['foto_capa']) ?>" alt="<?= esc($imovel['titulo']) ?>" class="imovel-imagem">
+                            <img src="<?= esc($imovel['foto_capa']) ?>" class="imovel-imagem">
                         <?php else: ?>
                             <div class="imovel-imagem" style="display: flex; align-items: center; justify-content: center; color: var(--text-secondary);">
                                 Sem foto

@@ -84,7 +84,7 @@
                 <div class="fotos-grid">
                     <?php foreach ($fotos as $foto): ?>
                         <div class="foto-card">
-                            <img src="<?= base_url($foto['caminho']) ?>" alt="<?= esc($foto['nome_arquivo']) ?>">
+                            <img src="<?= base_url($foto['caminho']) ?>">
                             
                             <?php if ($foto['capa']): ?>
                                 <span class="capa-badge">Capa</span>
