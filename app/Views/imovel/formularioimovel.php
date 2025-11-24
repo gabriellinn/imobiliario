@@ -18,11 +18,21 @@
 
         <div class="card">
             <?php
-                $action_url = (empty($imovel)) ? site_url('imovel/salvar') : site_url('imovel/atualizar/' . $imovel['id']);
+                // CORREÇÃO AQUI:
+                // Usamos 'update' e 'store' para coincidir com os nomes das funções no Controller.
+                if (!empty($imovel) && isset($imovel['id'])) {
+                    $action_url = site_url('imovel/update/' . $imovel['id']);
+                } else {
+                    $action_url = site_url('imovel/store');
+                }
             ?>
 
             <form action="<?= $action_url ?>" method="post">
                 <?= csrf_field() ?>
+
+                <?php if (!empty($imovel['id'])): ?>
+                    <input type="hidden" name="id" value="<?= $imovel['id'] ?>">
+                <?php endif; ?>
 
                 <div class="form-group">
                     <label for="titulo">Título</label>
@@ -39,6 +49,7 @@
                     <select id="tipo_imovel_id" name="tipo_imovel_id" required>
                         <option value="">Selecione...</option>
                         <?php
+                        // Nota: O ideal seria passar esta variável $tipos pelo Controller, mas assim também funciona.
                         $tipoImovelModel = new \App\Models\TipoImovelModel();
                         $tipos = $tipoImovelModel->findAll();
                         foreach ($tipos as $tipo):

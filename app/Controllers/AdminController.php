@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use App\Models\UsuarioModel;
+use App\Models\ImovelModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -141,15 +142,26 @@ class AdminController extends BaseController
     /**
      * UPDATE (U do CRUD) - Parte 2: Salvar as alterações
      */
-    public function update($id)
+    public function update($id): ResponseInterface
     {
+        // Verifica se o corretor existe
+        $corretor = $this->model->find($id);
+        if (empty($corretor) || $corretor['tipo'] !== 'corretor') {
+            return redirect()->to(site_url('admin/listar'))->with('erro', 'Usuário não é um corretor válido.');
+        }
+
         // 1. Validação
+        $novaSenha = $this->request->getPost('senha');
         $regras = [
             'nome'  => 'required|min_length[3]',
             'email' => "required|valid_email|is_unique[usuarios.email,id,$id]",
-            'senha' => 'permit_empty|min_length[6]',
-            'confirmar_senha' => 'matches[senha]'
         ];
+
+        // Só valida senha se foi informada
+        if (!empty($novaSenha)) {
+            $regras['senha'] = 'required|min_length[6]';
+            $regras['confirmar_senha'] = 'required|matches[senha]';
+        }
 
         if (!$this->validate($regras)) {
             return redirect()->back()->withInput()->with('errors', $this->validator->getErrors());
@@ -161,16 +173,19 @@ class AdminController extends BaseController
             'email' => $this->request->getPost('email'),
         ];
 
-        // 3. Lógica da Senha
-        $novaSenha = $this->request->getPost('senha');
+        // 3. Lógica da Senha - só atualiza se foi informada
         if (!empty($novaSenha)) {
             $dados['senha'] = $novaSenha;
         }
 
         // 4. Salva no banco
         try {
-            if ($this->model->update($id, $dados)) {
-                
+            // Desabilita a validação do modelo (já validamos no controller)
+            $this->model->skipValidation(true);
+            $resultado = $this->model->update($id, $dados);
+            $this->model->skipValidation(false);
+            
+            if ($resultado) {
                 // --- INÍCIO DA INTEGRAÇÃO DO LOG ---
                 $adminID = $this->session->get('usuario_id');
                 registrar_log(
@@ -181,8 +196,11 @@ class AdminController extends BaseController
 
                 // 5. Redireciona
                 return redirect()->to(site_url('admin/listar'))->with('sucesso', 'Corretor atualizado com sucesso!');
+            } else {
+                return redirect()->back()->withInput()->with('erro', 'Nenhuma alteração foi realizada.');
             }
         } catch (\Exception $e) {
+            $this->model->skipValidation(false);
             return redirect()->back()->withInput()->with('erro', 'Erro ao atualizar: ' . $e->getMessage());
         }
     }
@@ -200,18 +218,43 @@ class AdminController extends BaseController
                 return redirect()->to(site_url('admin/listar'))->with('erro', 'Usuário não é um corretor válido.');
             }
 
+            // Verifica se há imóveis associados ao corretor
+            $imovelModel = new ImovelModel();
+            $imoveis = $imovelModel->where('usuario_id', $id)->findAll();
+            
+            if (!empty($imoveis)) {
+                // Busca um admin para transferir os imóveis
+                $admin = $this->model->where('tipo', 'admin')->first();
+                
+                if (empty($admin)) {
+                    return redirect()->to(site_url('admin/listar'))->with('erro', 'Não é possível excluir o corretor: ele possui imóveis cadastrados e não há um administrador disponível para transferência.');
+                }
+                
+                // Transfere os imóveis para o admin
+                $imovelModel->builder()->where('usuario_id', $id)->update(['usuario_id' => $admin['id']]);
+            }
+
+            // Agora pode excluir o corretor
             if ($this->model->delete($id)) {
                 
                 // --- INÍCIO DA INTEGRAÇÃO DO LOG ---
                 $adminID = $this->session->get('usuario_id');
+                $mensagemLog = 'Excluiu corretor ID: ' . $id;
+                if (!empty($imoveis)) {
+                    $mensagemLog .= ' (transferiu ' . count($imoveis) . ' imóvel(is) para admin ID: ' . $admin['id'] . ')';
+                }
                 registrar_log(
                     $adminID,
-                    'Excluiu corretor ID: ' . $id
+                    $mensagemLog
                 );
                 // --- FIM DA INTEGRAÇÃO DO LOG ---
 
                 // Redireciona
-                return redirect()->to(site_url('admin/listar'))->with('sucesso', 'Corretor excluído com sucesso!');
+                $mensagem = 'Corretor excluído com sucesso!';
+                if (!empty($imoveis)) {
+                    $mensagem .= ' Os imóveis foram transferidos para o administrador.';
+                }
+                return redirect()->to(site_url('admin/listar'))->with('sucesso', $mensagem);
             }
 
         } catch (\Exception $e) {

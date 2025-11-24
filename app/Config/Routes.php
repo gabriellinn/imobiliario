@@ -57,7 +57,7 @@ $routes->group('imovel', ['filter' => 'session'], static function ($routes) {
     $routes->get('cadastrar', 'ImovelController::create');
     $routes->post('salvar', 'ImovelController::store');
     $routes->get('editar/(:num)', 'ImovelController::edit/$1');
-    $routes->post('atualizar/(:num)', 'ImovelController::update/$1');
+    $routes->post('update/(:num)', 'ImovelController::update/$1');
     $routes->get('excluir/(:num)', 'ImovelController::delete/$1');
 
 

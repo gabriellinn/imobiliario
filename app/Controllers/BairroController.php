@@ -152,7 +152,7 @@ class BairroController extends BaseController
             
             return redirect()->to('admin/bairro/listar')->with('sucesso', 'Bairro excluído com sucesso!');
         } catch (\Exception $e) {
-            return redirect()->to('admin/bairro/listar')->with('erro', 'Erro ao excluir: Este bairro pode estar em uso.');
+            return redirect()->to('admin/bairro/listar')->with('erro', 'Erro ao excluir: Este bairro estáem uso.');
         }
     }
 }
