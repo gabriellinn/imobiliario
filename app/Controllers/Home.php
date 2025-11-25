@@ -23,55 +23,84 @@ class Home extends BaseController
         $this->fotosModel = new FotosModel();
     }
 
-    public function index(): string
-    {
-        // Busca todos os imóveis disponíveis
-        $imoveis = $this->imovelModel
-            ->where('status', 'disponivel')
-            ->orderBy('destaque', 'DESC')
-            ->orderBy('created_at', 'DESC')
-            ->findAll();
+   public function index(): string
+{
+    $request = service('request');
 
-        // Enriquece os dados com informações relacionadas
-        foreach ($imoveis as &$imovel) {
-            // Busca tipo de imóvel
-            if (!empty($imovel['tipo_imovel_id'])) {
-                $tipoImovel = $this->tipoImovelModel->find($imovel['tipo_imovel_id']);
-                $imovel['tipo_imovel'] = $tipoImovel ? $tipoImovel['nome'] : 'Não informado';
-            } else {
-                $imovel['tipo_imovel'] = 'Não informado';
-            }
+    // Receber filtros via GET
+    $bairro = $request->getGet('bairro');
+    $tipo   = $request->getGet('tipo');
+    $finalidade = $request->getGet('finalidade');
 
-            // Busca bairro
-            if (!empty($imovel['bairro_id'])) {
-                $bairro = $this->bairroModel->find($imovel['bairro_id']);
-                $imovel['bairro'] = $bairro ? $bairro['nome'] . ' - ' . $bairro['cidade'] . '/' . $bairro['estado'] : 'Não informado';
-            } else {
-                $imovel['bairro'] = 'Não informado';
-            }
+    // Inicia busca
+    $builder = $this->imovelModel
+        ->where('status', 'disponivel');
 
-            // Busca foto de capa
+    // Aplicar filtros
+    if (!empty($bairro)) {
+        $builder->where('bairro_id', $bairro);
+    }
+
+    if (!empty($tipo)) {
+        $builder->where('tipo_imovel_id', $tipo);
+    }
+
+    if (!empty($finalidade)) {
+        $builder->where('finalidade', $finalidade);
+    }
+
+    // Ordenação
+    $imoveis = $builder
+        ->orderBy('destaque', 'DESC')
+        ->orderBy('created_at', 'DESC')
+        ->findAll();
+
+    // Enriquecer dados
+    foreach ($imoveis as &$imovel) {
+
+        // Tipo
+        $tipoImovel = $this->tipoImovelModel->find($imovel['tipo_imovel_id']);
+        $imovel['tipo_imovel'] = $tipoImovel['nome'] ?? 'Não informado';
+
+        // Bairro
+        $bairroData = $this->bairroModel->find($imovel['bairro_id']);
+        $imovel['bairro'] = $bairroData 
+            ? $bairroData['nome'] . ' - ' . $bairroData['cidade'] . '/' . $bairroData['estado'] 
+            : 'Não informado';
+
+        // Foto
+        $fotoCapa = $this->fotosModel
+            ->where('imovel_id', $imovel['id'])
+            ->where('capa', 1)
+            ->first();
+
+        if (!$fotoCapa) {
             $fotoCapa = $this->fotosModel
                 ->where('imovel_id', $imovel['id'])
-                ->where('capa', 1)
                 ->first();
-            
-            if (!$fotoCapa) {
-                // Se não tem capa, pega a primeira foto
-                $fotoCapa = $this->fotosModel
-                    ->where('imovel_id', $imovel['id'])
-                    ->first();
-            }
-            
-            $imovel['foto_capa'] = $fotoCapa ? base_url($fotoCapa['caminho']) : null;
         }
 
-        $dados = [
-            'imoveis' => $imoveis
-        ];
-
-        return view('paginainicial', $dados);
+        $imovel['foto_capa'] = $fotoCapa ? base_url($fotoCapa['caminho']) : null;
     }
+
+    // Buscar listas para os selects
+    $listaTipos = $this->tipoImovelModel->findAll();
+    $listaBairros = $this->bairroModel->findAll();
+
+    $dados = [
+        'imoveis'       => $imoveis,
+        'listaTipos'    => $listaTipos,
+        'listaBairros'  => $listaBairros,
+        'filtros' => [
+            'bairro'    => $bairro,
+            'tipo'      => $tipo,
+            'finalidade'=> $finalidade
+        ]
+    ];
+
+    return view('paginainicial', $dados);
+}
+
 
     /**
      * SHOW (Detail)
@@ -125,4 +154,6 @@ class Home extends BaseController
 
         return view('imovel/detalhes', $dados);
     }
+
+    
 }

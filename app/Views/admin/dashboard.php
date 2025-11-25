@@ -41,6 +41,13 @@
                 <p>Gerenciar bairros e localizações</p>
                 <a href="<?= base_url('admin/bairro/listar') ?>" class="btn btn-primary">Gerenciar Bairros</a>
             </div>
+
+             <div class="grid grid-2">
+            <div class="card">
+                <h2>Logs</h2>
+                <p>Visualizar logs do sistema</p>
+                <a href="<?= base_url('admin/logs') ?>" class="btn btn-primary">Visualizar Logs</a>
+            </div>
         </div>
     </div>
 </body>

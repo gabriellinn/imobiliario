@@ -20,6 +20,9 @@ $routes->get('/perfil', 'SiteController::meuPerfil');
 $routes->group('admin', ['filter' => 'admin'], static function ($routes) {
 
     $routes->get('dashboard', 'AdminController::index');
+    $routes->get('logs', 'AdminController::logs');
+
+     
 
     $routes->get('listar', 'AdminController::listarUsuarios');
     $routes->get('formulariocorretor', 'AdminController::create');
@@ -55,7 +58,7 @@ $routes->group('imovel', ['filter' => 'session'], static function ($routes) {
     // Rotas do Imovel
     $routes->get('listar', 'ImovelController::index');
     $routes->get('cadastrar', 'ImovelController::create');
-    $routes->post('salvar', 'ImovelController::store');
+    $routes->post('store', 'ImovelController::store');
     $routes->get('editar/(:num)', 'ImovelController::edit/$1');
     $routes->post('update/(:num)', 'ImovelController::update/$1');
     $routes->get('excluir/(:num)', 'ImovelController::delete/$1');

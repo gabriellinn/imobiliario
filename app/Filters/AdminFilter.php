@@ -17,7 +17,7 @@ class AdminFilter implements FilterInterface
         }
 
         if ($session->get('tipo') !== 'admin') {
-            return redirect()->to('/paginainicial');
+            return redirect()->to('/error/error_404');
         }
     }
 

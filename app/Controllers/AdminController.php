@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UsuarioModel;
 use App\Models\ImovelModel;
+use App\Models\LogsModel;
 use CodeIgniter\HTTP\ResponseInterface;
 
 /**
@@ -262,4 +263,40 @@ class AdminController extends BaseController
             return redirect()->to(site_url('admin/listar'))->with('erro', 'Erro ao excluir: ' . $e->getMessage());
         }
     }
+
+    public function logs()
+{
+    // 1. Instancia o Model
+    $logsModel = new \App\Models\LogsModel();
+
+    // 2. PEGA O usuario_id DA SESSÃO E ATRIBUI À VARIÁVEL
+    // Certifique-se de que a Session está carregada no seu Controller.
+    // O CI4 injeta a sessão automaticamente, então podemos acessar via $this->session.
+    $usuarioId = session()->get('usuario_id');
+    
+    // Verifica se o ID do usuário foi encontrado na sessão
+    if (empty($usuarioId)) {
+        // Trate o caso em que o usuário não está logado (ex: redirecione ou mostre uma mensagem)
+        // Por exemplo: return redirect()->to('login');
+        // Vou definir $usuarioId como null para mostrar todos os logs se não houver ID (opcional)
+        // ou você pode retornar uma view de erro.
+        $logs = []; 
+        log_message('error', 'Tentativa de acesso à logs sem usuario_id na sessão.');
+    } else {
+        // 3. FILTRA OS LOGS USANDO O ID DO USUÁRIO
+        $logs = $logsModel
+                ->where('id_usuario', $usuarioId) // Filtra apenas os logs deste usuário
+                ->orderBy('created_at', 'DESC')
+                ->findAll();
+    }
+    
+    $data = [
+        'logs' => $logs,
+        'title' => 'Meus Logs de Atividade',
+        'usuarioId' => $usuarioId // Opcional: passa o ID para a view
+    ];
+
+    // Carrega a View, que deve estar em app/Views/admin/logs.php
+    return view('admin/logs', $data);
+}
 }

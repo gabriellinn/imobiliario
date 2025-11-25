@@ -76,14 +76,77 @@
 </head>
 <body>
     <div class="container">
+
+        <!-- TÍTULO -->
         <div class="page-header text-center">
             <h1>Imóveis Disponíveis</h1>
         </div>
 
+        <!-- =============== FORMULÁRIO DE FILTROS =============== -->
+        <form method="GET" class="mb-4" style="margin-bottom: 2rem;">
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+
+                <!-- FILTRAR POR BAIRRO -->
+                <div>
+                    <label>Bairro:</label>
+                    <select name="bairro" class="form-control">
+                        <option value="">Todos</option>
+                        <?php foreach ($listaBairros as $b): ?>
+                            <option value="<?= $b['id'] ?>"
+                                <?= (isset($filtros['bairro']) && $filtros['bairro'] == $b['id']) ? 'selected' : '' ?>>
+                                <?= $b['nome'] ?> - <?= $b['cidade'] ?>/<?= $b['estado'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <!-- FILTRAR POR TIPO -->
+                <div>
+                    <label>Tipo de Imóvel:</label>
+                    <select name="tipo" class="form-control">
+                        <option value="">Todos</option>
+                        <?php foreach ($listaTipos as $t): ?>
+                            <option value="<?= $t['id'] ?>"
+                                <?= (isset($filtros['tipo']) && $filtros['tipo'] == $t['id']) ? 'selected' : '' ?>>
+                                <?= $t['nome'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+
+                <!-- FILTRAR POR FINALIDADE -->
+                <div>
+                    <label>Finalidade:</label>
+                    <select name="finalidade" class="form-control">
+                        <option value="">Todas</option>
+                        <option value="venda" 
+                            <?= (isset($filtros['finalidade']) && $filtros['finalidade'] == 'venda') ? 'selected' : '' ?>>
+                            Venda
+                        </option>
+                        <option value="aluguel" 
+                            <?= (isset($filtros['finalidade']) && $filtros['finalidade'] == 'aluguel') ? 'selected' : '' ?>>
+                            Aluguel
+                        </option>
+                    </select>
+                </div>
+
+                <!-- BOTÃO -->
+                <div style="align-self: flex-end;">
+                    <button class="btn btn-primary" type="submit">Filtrar</button>
+                </div>
+
+            </div>
+        </form>
+        <!-- =============== FIM DO FORMULÁRIO DE FILTROS =============== -->
+
+
+        <!-- LISTA DE IMÓVEIS -->
         <?php if (isset($imoveis) && !empty($imoveis)): ?>
             <div class="imoveis-grid">
                 <?php foreach ($imoveis as $imovel): ?>
                     <a href="<?= site_url('imovel/' . $imovel['id']) ?>" class="imovel-card <?= $imovel['destaque'] ? 'destaque' : '' ?>">
+                        
+                        <!-- FOTO -->
                         <?php if ($imovel['foto_capa']): ?>
                             <img src="<?= esc($imovel['foto_capa']) ?>" class="imovel-imagem">
                         <?php else: ?>
@@ -93,39 +156,46 @@
                         <?php endif; ?>
                         
                         <div class="imovel-conteudo">
+
+                            <!-- TÍTULO -->
                             <div class="imovel-titulo">
                                 <?= esc($imovel['titulo']) ?>
                                 <?php if ($imovel['destaque']): ?>
                                     <span class="destaque-badge">⭐ Destaque</span>
                                 <?php endif; ?>
                             </div>
-                            
+
+                            <!-- TIPO -->
                             <div class="imovel-tipo">
                                 <strong>Tipo:</strong> <?= esc($imovel['tipo_imovel']) ?>
                             </div>
-                            
-                            <div class="imovel-localizacao">
-                                <strong>Localização:</strong> <?= esc($imovel['bairro']) ?>
-                            </div>
-                            
+
+                            <!-- LOCALIZAÇÃO -->
+                           
+
+                            <!-- DETALHES -->
                             <div class="imovel-detalhes">
                                 <?php if ($imovel['dormitorios'] > 0): ?>
                                     <span>🛏️ <?= $imovel['dormitorios'] ?> quartos</span>
                                 <?php endif; ?>
+
                                 <?php if ($imovel['banheiros'] > 0): ?>
                                     <span>🚿 <?= $imovel['banheiros'] ?> banheiros</span>
                                 <?php endif; ?>
+
                                 <?php if ($imovel['garagem'] > 0): ?>
                                     <span>🚗 <?= $imovel['garagem'] ?> vagas</span>
                                 <?php endif; ?>
                             </div>
-                            
+
                             <?php if ($imovel['area_total']): ?>
                                 <div style="color: var(--text-secondary); font-size: 0.875rem; margin-bottom: var(--spacing-sm);">
-                                    <strong>Área:</strong> <?= number_format($imovel['area_total'], 0, ',', '.') ?> m²
+                                    <strong>Área:</strong> 
+                                    <?= number_format($imovel['area_total'], 0, ',', '.') ?> m²
                                 </div>
                             <?php endif; ?>
-                            
+
+                            <!-- PREÇO -->
                             <div class="imovel-preco">
                                 <?php if (!empty($imovel['finalidade']) && $imovel['finalidade'] == 'venda' && $imovel['preco_venda']): ?>
                                     R$ <?= number_format($imovel['preco_venda'], 2, ',', '.') ?>
@@ -139,16 +209,21 @@
                                     Consulte
                                 <?php endif; ?>
                             </div>
-                            
+
+                            <!-- STATUS -->
                             <div>
-                                <span class="badge badge-success"><?= esc(ucfirst($imovel['status'])) ?></span>
+                                <span class="badge badge-success">
+                                    <?= esc(ucfirst($imovel['status'])) ?>
+                                </span>
                             </div>
+
                         </div>
                     </a>
                 <?php endforeach; ?>
             </div>
+
         <?php else: ?>
-            <div class="card text-center">
+            <div class="card text-center p-4">
                 <p>Nenhum imóvel disponível no momento.</p>
             </div>
         <?php endif; ?>

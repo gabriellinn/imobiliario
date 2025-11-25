@@ -18,8 +18,7 @@
 
         <div class="card">
             <?php
-                // CORREÇÃO AQUI:
-                // Usamos 'update' e 'store' para coincidir com os nomes das funções no Controller.
+                // Define a URL da ação do formulário
                 if (!empty($imovel) && isset($imovel['id'])) {
                     $action_url = site_url('imovel/update/' . $imovel['id']);
                 } else {
@@ -49,7 +48,7 @@
                     <select id="tipo_imovel_id" name="tipo_imovel_id" required>
                         <option value="">Selecione...</option>
                         <?php
-                        // Nota: O ideal seria passar esta variável $tipos pelo Controller, mas assim também funciona.
+                        
                         $tipoImovelModel = new \App\Models\TipoImovelModel();
                         $tipos = $tipoImovelModel->findAll();
                         foreach ($tipos as $tipo):
@@ -121,9 +120,25 @@
                         <input type="number" step="0.01" id="area_construida" name="area_construida" value="<?= esc($imovel['area_construida'] ?? old('area_construida')) ?>">
                     </div>
                 </div>
-
+                
                 <div class="form-group">
-                    <label for="endereco">Endereço</label>
+                    <label for="bairro_id">Bairro</label>
+                    <select id="bairro_id" name="bairro_id">
+                        <option value="">Selecione o Bairro...</option>
+                        <?php
+                       
+                        $bairroModel = new \App\Models\BairroModel();
+                        $bairros = $bairroModel->orderBy('nome', 'asc')->findAll(); // Lista ordenada
+                        foreach ($bairros as $bairro):
+                        ?>
+                            <option value="<?= $bairro['id'] ?>" <?= (($imovel['bairro_id'] ?? old('bairro_id')) == $bairro['id']) ? 'selected' : '' ?>>
+                                <?= esc($bairro['nome']) ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="endereco">Endereço (Rua/Avenida)</label>
                     <input type="text" id="endereco" name="endereco" value="<?= esc($imovel['endereco'] ?? old('endereco')) ?>">
                 </div>
 
